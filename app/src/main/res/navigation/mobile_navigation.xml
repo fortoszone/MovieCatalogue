@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_tvshow">
+
+    <fragment
+        android:id="@+id/navigation_tvshow"
+        android:name="com.fort0.moviecatalogue.ui.tvshow.TvShowFragment"
+        android:label="@string/title_tv_show"
+        tools:layout="@layout/fragment_tvshow" />
+
+    <fragment
+        android:id="@+id/navigation_movie"
+        android:name="com.fort0.moviecatalogue.ui.movie.MovieFragment"
+        android:label="@string/title_movies"
+        tools:layout="@layout/fragment_movie" />
+
+</navigation>
