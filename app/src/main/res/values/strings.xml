@@ -2,4 +2,8 @@
     <string name="app_name">MovieCatalogue</string>
     <string name="title_movies">Movies</string>
     <string name="title_tv_show">TV Show</string>
+    <string name="todo">TODO</string>
+    <string name="movie_name">The Army of The Dead</string>
+    <string name="movie_year">2021</string>
+    <string name="viewerRating">5.9</string>
 </resources>

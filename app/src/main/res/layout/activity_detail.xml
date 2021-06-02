@@ -4,11 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.tvshow.TvShowFragment">
+    tools:context=".ui.DetailActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_tvshow"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/item_row" />
 </androidx.constraintlayout.widget.ConstraintLayout>
