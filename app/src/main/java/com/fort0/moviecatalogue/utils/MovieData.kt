@@ -122,12 +122,11 @@ object MovieData {
                 "Horror, Thriller",
                 "2000",
                 "Alex Browning is among a group of high school students readying themselves for a trip to Europe. When he suddenly has a premonition their airplane will crash, he screams to warn the others but instead he is thrown off of the plane.",
-                R.drawable.thenextthreedays,
+                R.drawable.finaldestination,
                 10
             )
         )
 
         return movies
-
     }
 }

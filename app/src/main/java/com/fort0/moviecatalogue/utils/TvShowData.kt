@@ -1,7 +1,6 @@
 package com.fort0.moviecatalogue.utils
 
 import com.fort0.moviecatalogue.R
-import com.fort0.moviecatalogue.data.Movies
 import com.fort0.moviecatalogue.data.TvShow
 
 object TvShowData {
@@ -51,7 +50,7 @@ object TvShowData {
                 "Crime, Drama, Thriller",
                 "2018",
                 "When three working-class teenagers begin attending an exclusive private school in Spain, the clash between them and the wealthy students leads to murder.",
-                R.drawable.moneyheist,
+                R.drawable.elite,
                 4
             )
         )

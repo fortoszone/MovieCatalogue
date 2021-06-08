@@ -8,5 +8,4 @@ data class TvShow(
     var description: String = "",
     var image: Int = 0,
     var id: Int = 0
-
 )

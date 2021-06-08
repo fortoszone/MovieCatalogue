@@ -1,34 +1,31 @@
-package com.fort0.moviecatalogue
+package com.fort0.moviecatalogue.ui.tvshow
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.fort0.moviecatalogue.data.Movies
+import com.fort0.moviecatalogue.data.TvShow
 import com.fort0.moviecatalogue.databinding.ItemRowBinding
-import com.fort0.moviecatalogue.ui.movie.MovieFragment
 
-class MovieAdapter(private val listMovie: MovieFragment) :
-    RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
-    private val items = ArrayList<Movies>()
+class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ListViewHolder>() {
+    private val items = ArrayList<TvShow>()
 
-    fun setItems(items: ArrayList<Movies>?) {
-        this.items.clear()
-        if (items != null) {
-            this.items.addAll(items)
-        }
-        notifyDataSetChanged()
+    fun setItems(tvShow: ArrayList<TvShow>?) {
+        if (tvShow.isNullOrEmpty()) return
+        this.items.addAll(tvShow)
+
     }
 
-    inner class ListViewHolder(private val binding: ItemRowBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: Movies) {
+    inner class ListViewHolder(private val binding: ItemRowBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(tvShow: TvShow) {
             with(binding) {
-                name.text = movie.name
-                rating.text = movie.viewerRating
-                year.text = movie.year
+                name.text = tvShow.name
+                rating.text = tvShow.viewerRating
+                year.text = tvShow.year
 
                 Glide.with(itemView.context)
-                    .load(movie.image)
+                    .load(tvShow.image)
                     .into(image)
 
                 /*itemView.setOnClickListener {
@@ -48,11 +45,11 @@ class MovieAdapter(private val listMovie: MovieFragment) :
 
     }
 
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(items[position])
-    }
-
     override fun getItemCount(): Int {
         return items.size
+    }
+
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        holder.bind(items[position])
     }
 }

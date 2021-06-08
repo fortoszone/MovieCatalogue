@@ -7,37 +7,39 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.fort0.moviecatalogue.*
-import com.fort0.moviecatalogue.data.Movies
-import com.fort0.moviecatalogue.data.TvShow
-import com.fort0.moviecatalogue.ui.movie.MovieViewModel
-import com.fort0.moviecatalogue.utils.TvShowData
+import com.fort0.moviecatalogue.R
+import com.fort0.moviecatalogue.databinding.FragmentMovieBinding
+import com.fort0.moviecatalogue.databinding.FragmentTvshowBinding
 
 class TvShowFragment : Fragment() {
-
-    private var tvShowList: ArrayList<TvShow> = arrayListOf()
-    private lateinit var viewModel: TvShowViewModel
-    private lateinit var adapter: TvShowAdapter
-
+    private lateinit var binding: FragmentTvshowBinding
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        val root: View = inflater.inflate(R.layout.fragment_tvshow, container, false)
-        val rvTvShow = root.findViewById<View>(R.id.rv_tvshow) as RecyclerView
-        rvTvShow.layoutManager = LinearLayoutManager(activity)
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
 
-        viewModel = ViewModelProvider(this).get(TvShowViewModel::class.java)
-        val tvShow = viewModel.getTvShow()
+        binding = FragmentTvshowBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        adapter = TvShowAdapter(tvShowList)
-        adapter.setItems(tvShow)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (activity != null) {
+            val viewModel = ViewModelProvider(
+                this,
+                ViewModelProvider.NewInstanceFactory()
+            )[TvShowViewModel::class.java]
+            val tvShowItem = viewModel.getTvShowList()
+            val tvShowAdapter = TvShowAdapter()
+            tvShowAdapter.setItems(tvShowItem)
 
-        val tvShowAdapter = TvShowAdapter(tvShowList)
-        rvTvShow.adapter = tvShowAdapter
-        return root
+            with(binding.rvTvshow) {
+                this.layoutManager = LinearLayoutManager(context)
+                this.setHasFixedSize(true)
+                this.adapter = tvShowAdapter
+            }
+        }
     }
 }
