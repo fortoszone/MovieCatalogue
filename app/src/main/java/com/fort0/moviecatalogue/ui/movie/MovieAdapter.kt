@@ -22,13 +22,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movies) {
             with(binding) {
-                name.text = movie.name
+                tvName.text = movie.name
                 rating.text = movie.viewerRating
-                year.text = movie.year
+                tvYear.text = movie.year
 
                 Glide.with(itemView.context)
                     .load(movie.image)
-                    .into(image)
+                    .into(ivImageDetail)
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)

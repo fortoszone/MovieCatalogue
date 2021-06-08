@@ -45,24 +45,26 @@ class DetailActivity : AppCompatActivity() {
     fun getMovieDetail(movies: Movies) {
         Glide.with(this)
             .load(movies.image)
-            .into(binding.image)
+            .into(binding.ivImageDetail)
 
-        binding.title.text = movies.name
-        binding.genre.text = movies.genre
-        binding.desc.text = movies.description
-        binding.year.text = movies.year
+        binding.tvTitle.text = movies.name
+        binding.tvGenre.text = movies.genre
+        binding.tvDesc.text = movies.description
+        binding.tvYear.text = movies.year
+        binding.tvRating.text = movies.viewerRating
 
     }
 
     fun getTvShowDetail(tvshow: TvShow) {
         Glide.with(this)
             .load(tvshow.image)
-            .into(binding.image)
+            .into(binding.ivImageDetail)
 
-        binding.title.text = tvshow.name
-        binding.genre.text = tvshow.genre
-        binding.desc.text = tvshow.description
-        binding.year.text = tvshow.year
+        binding.tvTitle.text = tvshow.name
+        binding.tvGenre.text = tvshow.genre
+        binding.tvDesc.text = tvshow.description
+        binding.tvYear.text = tvshow.year
+        binding.tvRating.text = tvshow.viewerRating
     }
 
 }

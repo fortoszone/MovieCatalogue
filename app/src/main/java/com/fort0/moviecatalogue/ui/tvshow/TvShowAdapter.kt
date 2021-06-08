@@ -22,13 +22,13 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ListViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(tvShow: TvShow) {
             with(binding) {
-                name.text = tvShow.name
+                tvName.text = tvShow.name
                 rating.text = tvShow.viewerRating
-                year.text = tvShow.year
+                tvYear.text = tvShow.year
 
                 Glide.with(itemView.context)
                     .load(tvShow.image)
-                    .into(image)
+                    .into(ivImageDetail)
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)
