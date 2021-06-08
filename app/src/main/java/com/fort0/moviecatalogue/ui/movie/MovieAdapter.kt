@@ -1,11 +1,13 @@
 package com.fort0.moviecatalogue.ui.movie
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fort0.moviecatalogue.data.Movies
 import com.fort0.moviecatalogue.databinding.ItemRowBinding
+import com.fort0.moviecatalogue.ui.detail.DetailActivity
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     private val items = ArrayList<Movies>()
@@ -28,12 +30,12 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
                     .load(movie.image)
                     .into(image)
 
-                /*itemView.setOnClickListener {
+                itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.EXTRA_FILM, movie.id)
-                    intent.putExtra(DetailActivity.EXTRA_CATEGORY, DetailViewModel.MOVIE)
+                    intent.putExtra(DetailActivity.EXTRA_MOVIES, movie.id)
 
-                    itemView.context.startActivity(intent)*/
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }

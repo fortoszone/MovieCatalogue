@@ -1,11 +1,13 @@
 package com.fort0.moviecatalogue.ui.tvshow
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fort0.moviecatalogue.data.TvShow
 import com.fort0.moviecatalogue.databinding.ItemRowBinding
+import com.fort0.moviecatalogue.ui.detail.DetailActivity
 
 class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ListViewHolder>() {
     private val items = ArrayList<TvShow>()
@@ -28,12 +30,12 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ListViewHolder>() {
                     .load(tvShow.image)
                     .into(image)
 
-                /*itemView.setOnClickListener {
+                itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.EXTRA_FILM, movie.id)
-                    intent.putExtra(DetailActivity.EXTRA_CATEGORY, DetailViewModel.MOVIE)
+                    intent.putExtra(DetailActivity.EXTRA_TVSHOW, tvShow.id)
 
-                    itemView.context.startActivity(intent)*/
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }

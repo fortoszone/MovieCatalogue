@@ -15,7 +15,7 @@ object MovieData {
                 "2021",
                 "Following a zombie outbreak in Las Vegas, a group of mercenaries take the ultimate gamble, venturing into the quarantine zone to pull off the greatest heist ever attempted.",
                 R.drawable.armyofthedead,
-                1
+                "1"
             )
         )
 
@@ -27,7 +27,7 @@ object MovieData {
                 "2013",
                 "Secret Service agent Mike Banning finds himself trapped inside the White House in the wake of a terrorist attack and works with national security to rescue the President from his kidnappers.",
                 R.drawable.olympushasfallen,
-                2
+                "2"
             )
         )
 
@@ -39,7 +39,7 @@ object MovieData {
                 "2016",
                 "In London for the Prime Minister's funeral, Mike Banning is caught up in a plot to assassinate all the attending world leaders.",
                 R.drawable.londonhasfallen,
-                3
+                "3"
             )
         )
 
@@ -51,7 +51,7 @@ object MovieData {
                 "2021",
                 "After witnessing a haunting in their hospital, two doctors become dangerously obsessed with obtaining scientific proof that ghosts exist.",
                 R.drawable.ghostlab,
-                4
+                "4"
             )
         )
 
@@ -63,7 +63,7 @@ object MovieData {
                 "2018",
                 "A small team of elite American intelligence officers, part of a top-secret tactical command unit, try to smuggle a mysterious police officer with sensitive information out of Indonesia.",
                 R.drawable.mile22,
-                5
+                "5"
             )
         )
 
@@ -75,7 +75,7 @@ object MovieData {
                 "2021",
                 "An agoraphobic woman living alone in New York begins spying on her new neighbors, only to witness a disturbing act of violence.",
                 R.drawable.thewomaninthewindow,
-                6
+                "6"
             )
         )
 
@@ -87,7 +87,7 @@ object MovieData {
                 "2017",
                 "For Lukman (Ricky Harun), Dewi's (Jessica Milla) departure to London is a small apocalypse. He works odd jobs in order to catch up to London.",
                 R.drawable.fromlondontobali,
-                7
+                "7"
             )
         )
 
@@ -99,7 +99,7 @@ object MovieData {
                 "2016",
                 "Snipers ordered to protect a gas pipeline from terrorists suspect a security breach when they're targeted by a ghost shooter who knows their location.",
                 R.drawable.sniperghostshooter,
-                8
+                "8"
             )
         )
 
@@ -111,7 +111,7 @@ object MovieData {
                 "2010",
                 "A married couple's life is turned upside down when the wife is accused of a murder.",
                 R.drawable.thenextthreedays,
-                9
+                "9"
             )
         )
 
@@ -123,7 +123,7 @@ object MovieData {
                 "2000",
                 "Alex Browning is among a group of high school students readying themselves for a trip to Europe. When he suddenly has a premonition their airplane will crash, he screams to warn the others but instead he is thrown off of the plane.",
                 R.drawable.finaldestination,
-                10
+                "10"
             )
         )
 
