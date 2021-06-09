@@ -1,18 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:paddingHorizontal="10dp">
+    android:layout_height="130dp"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="5dp"
+    app:cardCornerRadius="20dp">
 
-    <com.mikhaellopez.gradientview.GradientView
-        android:id="@+id/gradientView"
+    <RelativeLayout
+        android:id="@+id/user"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:gv_direction="left_to_right"
-        app:gv_end="#9C27B0"
-        app:gv_start="#3f51b5"
-        android:layout_marginVertical="5dp"/>
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/iv_image_detail"
+            android:layout_width="90dp"
+            android:layout_height="130dp"
+            android:layout_marginEnd="14dp"
+            android:contentDescription="@string/todo"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/armyofthedead" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/iv_image_detail"
+            android:text="@string/movie_name"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_toEndOf="@id/iv_image_detail"
+            android:text="@string/movie_year"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/star"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/star" />
+
+            <TextView
+                android:id="@+id/rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@string/viewerRating"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

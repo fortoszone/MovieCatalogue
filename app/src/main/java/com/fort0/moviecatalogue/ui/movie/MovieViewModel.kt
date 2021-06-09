@@ -1,13 +1,11 @@
 package com.fort0.moviecatalogue.ui.movie
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.graphics.Movie
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.fort0.moviecatalogue.data.Movies
+import com.fort0.moviecatalogue.utils.MovieData
 
 class MovieViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getMovieList() = MovieData.generateMovieList()
 }

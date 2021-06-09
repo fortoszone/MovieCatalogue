@@ -2,4 +2,14 @@
     <string name="app_name">MovieCatalogue</string>
     <string name="title_movies">Movies</string>
     <string name="title_tv_show">TV Show</string>
+    <string name="todo">TODO</string>
+    <string name="movie_name">The Army of The Dead</string>
+    <string name="movie_year">2021</string>
+    <string name="viewerRating">5.9</string>
+    <string name="overview">Overview</string>
+    <string name="desc">Following a zombie outbreak in Las Vegas, a group of mercenaries take the ultimate gamble, venturing into the quarantine zone to pull off the greatest heist ever attempted</string>
+    <string name="genre">Horror</string>
+    <string name="year">2021</string>
+    <string name="separator">|</string>
+    <string name="rating">5.5</string>
 </resources>
