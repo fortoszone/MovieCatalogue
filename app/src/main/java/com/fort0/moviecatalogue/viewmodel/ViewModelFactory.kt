@@ -18,25 +18,26 @@ class ViewModelFactory private constructor(private val repository: Repository) :
 
         fun getInstance(context: Context): ViewModelFactory =
             instance ?: synchronized(this) {
-                ViewModelFactory(Injection.provideRepository(context)).apply { instance = this }
+                instance ?: ViewModelFactory(Injection.provideRepository(context)).apply {
+                    instance = this
+                }
             }
     }
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return when {
-            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
-                DetailViewModel(repository) as T
-            }
-
+        when {
             modelClass.isAssignableFrom(MovieViewModel::class.java) -> {
-                MovieViewModel(repository) as T
+                return MovieViewModel(repository) as T
             }
-
             modelClass.isAssignableFrom(TvShowViewModel::class.java) -> {
-                TvShowViewModel(repository) as T
+                return TvShowViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(DetailViewModel::class.java) -> {
+                return DetailViewModel(repository) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
+
     }
 }

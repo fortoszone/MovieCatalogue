@@ -12,5 +12,4 @@ data class MovieResponse(
     var description: String,
     var image: String,
     var id: String
-
 ) : Parcelable

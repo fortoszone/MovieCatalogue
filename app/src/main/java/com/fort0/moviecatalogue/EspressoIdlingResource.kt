@@ -2,15 +2,15 @@ package com.fort0.moviecatalogue
 
 import androidx.test.espresso.idling.CountingIdlingResource
 
-object EspressoIdlingResources {
+object EspressoIdlingResource {
     private const val RESOURCE = "GLOBAL"
-    val idlingResource =CountingIdlingResource(RESOURCE)
+    val idlingResource = CountingIdlingResource(RESOURCE)
 
-    fun increment(){
+    fun increment() {
         idlingResource.increment()
     }
 
-    fun decrement(){
+    fun decrement() {
         idlingResource.decrement()
     }
 }

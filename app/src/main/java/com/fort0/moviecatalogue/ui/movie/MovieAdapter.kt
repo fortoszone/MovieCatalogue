@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.fort0.moviecatalogue.R
 import com.fort0.moviecatalogue.data.source.local.Movies
 import com.fort0.moviecatalogue.databinding.ItemRowBinding
@@ -30,7 +29,6 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
                 Glide.with(itemView.context)
                     .load(movie.image)
-                    .apply(RequestOptions())
                     .into(ivImageDetail)
 
                 itemView.setOnClickListener {

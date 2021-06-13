@@ -10,14 +10,11 @@ import com.fort0.moviecatalogue.data.source.local.Movies
 import com.fort0.moviecatalogue.data.source.local.TvShow
 import com.fort0.moviecatalogue.databinding.ActivityDetailBinding
 import com.fort0.moviecatalogue.viewmodel.ViewModelFactory
-import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
 
     companion object {
-        const val EXTRA_MOVIES = "extra_movies"
-        const val EXTRA_TVSHOW = "extra_tvshows"
         const val EXTRA_CONTENT = "extra_content"
         const val EXTRA_ATTRIBUTE = "extra_attribute"
     }

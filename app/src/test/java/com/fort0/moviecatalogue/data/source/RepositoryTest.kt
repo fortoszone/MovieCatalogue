@@ -51,7 +51,6 @@ class RepositoryTest {
         val movieEntities = LiveDataTestUtil.getValue(repository.getMovieDetail(movieId))
         verify(remote).getCallbackMovie(any())
         assertNotNull(movieEntities)
-        assertNotNull(movieEntities.name)
         assertEquals(movieResponses[0].name, movieEntities.name)
 
     }
@@ -79,7 +78,6 @@ class RepositoryTest {
         val tvshowEntities = LiveDataTestUtil.getValue(repository.getTvShowDetail(tvshowId))
         verify(remote).getCallbackTvShow(any())
         assertNotNull(tvshowEntities)
-        assertNotNull(tvshowEntities.name)
         assertEquals(tvshowResponse[0].name, tvshowEntities.name)
     }
 }

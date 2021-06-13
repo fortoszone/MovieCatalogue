@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class TvShowResponse (
+data class TvShowResponse(
     var name: String,
     var viewerRating: String,
     var genre: String,

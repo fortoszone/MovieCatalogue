@@ -28,7 +28,7 @@ class DetailViewModelTest {
     private lateinit var viewModel: DetailViewModel
 
     @get:Rule
-    var instantTaskExecutorRule = InstantTaskExecutorRule() // asynchronous
+    var instantTaskExecutorRule = InstantTaskExecutorRule() //asynchronous
 
     @Mock
     private lateinit var repository: Repository

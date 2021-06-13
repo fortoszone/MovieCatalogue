@@ -22,7 +22,7 @@ class JsonHelper(private val context: Context) {
         }
     }
 
-    fun loadTvShow(): List<TvShowResponse> {
+    fun loadTvShows(): List<TvShowResponse> {
         val list = ArrayList<TvShowResponse>()
         try {
             val responseObject = JSONObject(parsingFileToString("TvShow.json").toString())
@@ -41,13 +41,17 @@ class JsonHelper(private val context: Context) {
                 val tvshowResponse = TvShowResponse(name, rating, genre, year, desc, image, id)
                 list.add(tvshowResponse)
             }
+
         } catch (e: JSONException) {
             e.printStackTrace()
+
         }
+
         return list
+
     }
 
-    fun loadMovie(): List<MovieResponse> {
+    fun loadMovies(): List<MovieResponse> {
         val list = ArrayList<MovieResponse>()
         try {
             val responseObject = JSONObject(parsingFileToString("Movie.json").toString())
@@ -66,9 +70,13 @@ class JsonHelper(private val context: Context) {
                 val movieResponse = MovieResponse(name, rating, genre, year, desc, image, id)
                 list.add(movieResponse)
             }
+
         } catch (e: JSONException) {
             e.printStackTrace()
+
         }
+
         return list
+
     }
 }

@@ -2,7 +2,7 @@ package com.fort0.moviecatalogue.data.source.remote
 
 import android.os.Handler
 import android.os.Looper
-import com.fort0.moviecatalogue.EspressoIdlingResources
+import com.fort0.moviecatalogue.EspressoIdlingResource
 import com.fort0.moviecatalogue.data.source.remote.response.MovieResponse
 import com.fort0.moviecatalogue.data.source.remote.response.TvShowResponse
 import com.fort0.moviecatalogue.utils.JsonHelper
@@ -23,27 +23,28 @@ class RemoteDataSource private constructor(private val jsonHelper: JsonHelper) {
             }
     }
 
-    fun getCallbackMovie(callback: LoadMovieCallback) {
-        EspressoIdlingResources.increment()
+    fun getCallbackTvShow(callback: LoadTvShowCallback) {
+        EspressoIdlingResource.increment()
         handler.postDelayed({
-            callback.onAllMoviesReceived(jsonHelper.loadMovie())
-            EspressoIdlingResources.decrement()
+            callback.onAllTvShowReceived(jsonHelper.loadTvShows())
+            EspressoIdlingResource.decrement()
         }, SERVICE_LATENCY_IN_MILLIS)
     }
 
-    fun getCallbackTvShow(callback: LoadTvShowCallback) {
-        EspressoIdlingResources.increment()
+    fun getCallbackMovie(callback: LoadMovieCallback) {
+        EspressoIdlingResource.increment()
         handler.postDelayed({
-            callback.onAllTvShowReceived(jsonHelper.loadTvShow())
-            EspressoIdlingResources.decrement()
+            callback.onAllMoviesReceived(jsonHelper.loadMovies())
+            EspressoIdlingResource.decrement()
         }, SERVICE_LATENCY_IN_MILLIS)
+    }
+
+    interface LoadTvShowCallback {
+        fun onAllTvShowReceived(tvshowResponse: List<TvShowResponse>)
     }
 
     interface LoadMovieCallback {
         fun onAllMoviesReceived(movieResponse: List<MovieResponse>)
     }
 
-    interface LoadTvShowCallback {
-        fun onAllTvShowReceived(tvshowResponse: List<TvShowResponse>)
-    }
 }
