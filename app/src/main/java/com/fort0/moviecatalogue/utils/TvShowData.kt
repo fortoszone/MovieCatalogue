@@ -1,7 +1,6 @@
 package com.fort0.moviecatalogue.utils
 
-import com.fort0.moviecatalogue.R
-import com.fort0.moviecatalogue.data.TvShow
+import com.fort0.moviecatalogue.data.source.local.TvShow
 
 object TvShowData {
     fun generateTvShowList(): ArrayList<TvShow> {
@@ -14,7 +13,7 @@ object TvShowData {
                 "Crime, Drama, Fantasy",
                 "2018",
                 "A mysterious, clever girl named Nanno transfers to different schools, exposing the lies and misdeeds of the students and faculty at every turn.",
-                R.drawable.girlfromnowhere,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9hDXqzN5l4lBmEtb8IstXr91k8z.jpg",
                 "1"
             )
         )
@@ -26,7 +25,7 @@ object TvShowData {
                 "Crime, Drama, Mystery",
                 "2021",
                 "Hell-bent on exacting revenge and proving he was framed for his sister's murder, Álex sets out to unearth much more than the crime's real culprit.",
-                R.drawable.whokilledsara,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
                 "2"
             )
         )
@@ -38,7 +37,7 @@ object TvShowData {
                 "Action, Crime, Mystery",
                 "2017",
                 "An unusual group of robbers attempt to carry out the most perfect robbery in Spanish history - stealing 2.4 billion euros from the Royal Mint of Spain.",
-                R.drawable.moneyheist,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/MoEKaPFHABtA1xKoOteirGaHl1.jpg",
                 "3"
             )
         )
@@ -50,7 +49,7 @@ object TvShowData {
                 "Crime, Drama, Thriller",
                 "2018",
                 "When three working-class teenagers begin attending an exclusive private school in Spain, the clash between them and the wealthy students leads to murder.",
-                R.drawable.elite,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3NTAbAiao4JLzFQw6YxP1YZppM8.jpg",
                 "4"
             )
         )
@@ -62,7 +61,7 @@ object TvShowData {
                 "Crime, Drama, Fantasy",
                 "2016",
                 "Lucifer Morningstar has decided he's had enough of being the dutiful servant in Hell and decides to spend some time on Earth to better understand humanity. He settles in Los Angeles - the City of Angels.",
-                R.drawable.lucifer,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg",
                 "5"
             )
         )
@@ -74,7 +73,7 @@ object TvShowData {
                 "Action, Crime, Drama",
                 "2021",
                 "Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.",
-                R.drawable.lupin,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sgxawbFB5Vi5OkPWQLNfl3dvkNJ.jpg",
                 "6"
             )
         )
@@ -86,7 +85,7 @@ object TvShowData {
                 "Drama, Romance",
                 "2016",
                 "A low-level Cabinet member becomes President of the United States after a catastrophic attack kills everyone above him in the line of succession.",
-                R.drawable.designatedsurvivor,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5R125JAIh1N38pzHp2dRsBpOVNY.jpg",
                 "7"
             )
         )
@@ -98,7 +97,7 @@ object TvShowData {
                 "Comedy, Drama, Romance",
                 "2019",
                 "Snipers ordered to protect a gas pipeline from terrorists suspect a security breach when they're targeted by a ghost shooter who knows their location.",
-                R.drawable.lovealarm,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hQ8Hobo1RpYuZVQJQOCycNMHAG.jpg",
                 "8"
             )
         )
@@ -110,7 +109,7 @@ object TvShowData {
                 "Drama, Fantasy, Horror",
                 "2016",
                 "When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces in order to get him back.",
-                R.drawable.strangerthings,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg",
                 "9"
             )
         )
@@ -122,7 +121,7 @@ object TvShowData {
                 "Drama, Fantasy, Horror",
                 "2018",
                 "A dangerously charming, intensely obsessive young man goes to extreme measures to insert himself into the lives of those he is transfixed by.",
-                R.drawable.you,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9qZUrhcFVI9MNznVJxdfcrmifof.jpg",
                 "10"
             )
         )

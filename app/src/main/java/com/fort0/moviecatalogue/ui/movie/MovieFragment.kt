@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fort0.moviecatalogue.R
 import com.fort0.moviecatalogue.databinding.FragmentMovieBinding
+import com.fort0.moviecatalogue.viewmodel.ViewModelFactory
 
 class MovieFragment : Fragment() {
     private lateinit var binding: FragmentMovieBinding
@@ -20,6 +21,10 @@ class MovieFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMovieBinding.inflate(layoutInflater, container, false)
+
+        binding.rvMovies.visibility = View.INVISIBLE
+        binding.progressBar.visibility = View.VISIBLE
+
         return binding.root
     }
 
@@ -28,13 +33,16 @@ class MovieFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
 
         if (activity != null) {
-            val viewModel = ViewModelProvider(
-                this,
-                ViewModelProvider.NewInstanceFactory()
-            )[MovieViewModel::class.java]
-            val movieItems = viewModel.getMovieList()
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            val viewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
             val movieAdapter = MovieAdapter()
-            movieAdapter.setItems(movieItems)
+
+            viewModel.getMovieList().observe(viewLifecycleOwner, { movies ->
+                binding.rvMovies.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.INVISIBLE
+                movieAdapter.setItems(movies)
+                movieAdapter.notifyDataSetChanged()
+            })
 
             with(binding.rvMovies) {
                 layoutManager = LinearLayoutManager(context)

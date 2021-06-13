@@ -1,7 +1,6 @@
 package com.fort0.moviecatalogue.utils
 
-import com.fort0.moviecatalogue.R
-import com.fort0.moviecatalogue.data.Movies
+import com.fort0.moviecatalogue.data.source.local.Movies
 
 object MovieData {
     fun generateMovieList(): ArrayList<Movies> {
@@ -14,7 +13,7 @@ object MovieData {
                 "Action, Crime, Horror",
                 "2021",
                 "Following a zombie outbreak in Las Vegas, a group of mercenaries take the ultimate gamble, venturing into the quarantine zone to pull off the greatest heist ever attempted.",
-                R.drawable.armyofthedead,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/z8CExJekGrEThbpMXAmCFvvgoJR.jpg",
                 "1"
             )
         )
@@ -26,7 +25,7 @@ object MovieData {
                 "Action, Thriller",
                 "2013",
                 "Secret Service agent Mike Banning finds himself trapped inside the White House in the wake of a terrorist attack and works with national security to rescue the President from his kidnappers.",
-                R.drawable.olympushasfallen,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gKnx04MxnKcf5uOdhHhAAkqcCg.jpg",
                 "2"
             )
         )
@@ -38,7 +37,7 @@ object MovieData {
                 "Action, Thriller",
                 "2016",
                 "In London for the Prime Minister's funeral, Mike Banning is caught up in a plot to assassinate all the attending world leaders.",
-                R.drawable.londonhasfallen,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wah9TViZDE4zfVsnIgwLB4zSxzH.jpg",
                 "3"
             )
         )
@@ -50,7 +49,7 @@ object MovieData {
                 "Drama, Horror, Thriller",
                 "2021",
                 "After witnessing a haunting in their hospital, two doctors become dangerously obsessed with obtaining scientific proof that ghosts exist.",
-                R.drawable.ghostlab,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vdMsMYfkHJ6mLht5QCg7Hl8hnEp.jpg",
                 "4"
             )
         )
@@ -62,7 +61,7 @@ object MovieData {
                 "Action, Thriller",
                 "2018",
                 "A small team of elite American intelligence officers, part of a top-secret tactical command unit, try to smuggle a mysterious police officer with sensitive information out of Indonesia.",
-                R.drawable.mile22,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2L8ehd95eSW9x7KINYtZmRkAlrZ.jpg",
                 "5"
             )
         )
@@ -74,7 +73,7 @@ object MovieData {
                 "Crime, Drama, Mystery",
                 "2021",
                 "An agoraphobic woman living alone in New York begins spying on her new neighbors, only to witness a disturbing act of violence.",
-                R.drawable.thewomaninthewindow,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wcrjc1uwQaqoqtqi67Su4VCOYo0.jpg",
                 "6"
             )
         )
@@ -86,7 +85,7 @@ object MovieData {
                 "Drama, Romance",
                 "2017",
                 "For Lukman (Ricky Harun), Dewi's (Jessica Milla) departure to London is a small apocalypse. He works odd jobs in order to catch up to London.",
-                R.drawable.fromlondontobali,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/yMb1zfM1m64zPaZU3goTZ6mpnHu.jpg",
                 "7"
             )
         )
@@ -98,7 +97,7 @@ object MovieData {
                 "Action, Drama, Thriller",
                 "2016",
                 "Snipers ordered to protect a gas pipeline from terrorists suspect a security breach when they're targeted by a ghost shooter who knows their location.",
-                R.drawable.sniperghostshooter,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pk0OypQ6Z3rsOtl7r0UhTEEqu44.jpg",
                 "8"
             )
         )
@@ -110,7 +109,7 @@ object MovieData {
                 "Action, Crime, Drama",
                 "2010",
                 "A married couple's life is turned upside down when the wife is accused of a murder.",
-                R.drawable.thenextthreedays,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rXWk1S0Ka7WtkIbi5grCxaY98Dl.jpg",
                 "9"
             )
         )
@@ -122,7 +121,7 @@ object MovieData {
                 "Horror, Thriller",
                 "2000",
                 "Alex Browning is among a group of high school students readying themselves for a trip to Europe. When he suddenly has a premonition their airplane will crash, he screams to warn the others but instead he is thrown off of the plane.",
-                R.drawable.finaldestination,
+                "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5vxXrr1MqGsT4NNeRITpfDnl4Rq.jpg",
                 "10"
             )
         )

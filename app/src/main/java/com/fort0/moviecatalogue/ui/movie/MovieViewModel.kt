@@ -1,11 +1,10 @@
 package com.fort0.moviecatalogue.ui.movie
 
-import android.graphics.Movie
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.fort0.moviecatalogue.data.Movies
-import com.fort0.moviecatalogue.utils.MovieData
+import com.fort0.moviecatalogue.data.source.Repository
+import com.fort0.moviecatalogue.data.source.local.Movies
 
-class MovieViewModel : ViewModel() {
-    fun getMovieList() = MovieData.generateMovieList()
+class MovieViewModel(private val repository: Repository) : ViewModel() {
+    fun getMovieList(): LiveData<List<Movies>> = repository.getMovieList()
 }

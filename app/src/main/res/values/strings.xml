@@ -12,4 +12,6 @@
     <string name="year">2021</string>
     <string name="separator">|</string>
     <string name="rating">5.5</string>
+    <string name="movie">Movie</string>
+    <string name="tvshow">Tv Show</string>
 </resources>

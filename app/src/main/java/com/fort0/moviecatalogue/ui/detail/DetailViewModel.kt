@@ -1,36 +1,19 @@
 package com.fort0.moviecatalogue.ui.detail
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.fort0.moviecatalogue.data.Movies
-import com.fort0.moviecatalogue.data.TvShow
-import com.fort0.moviecatalogue.utils.MovieData
-import com.fort0.moviecatalogue.utils.TvShowData
+import com.fort0.moviecatalogue.data.source.Repository
+import com.fort0.moviecatalogue.data.source.local.Movies
+import com.fort0.moviecatalogue.data.source.local.TvShow
 
-class DetailViewModel : ViewModel() {
-    private lateinit var tvShows: TvShow
-    private lateinit var movies: Movies
+class DetailViewModel(private val repository: Repository) : ViewModel() {
+    lateinit var id: String
 
-    companion object {
-        const val MOVIES = "movies"
-        const val TV_SHOWS = "tvshow"
+    fun setSelectedItem(movieId: String) {
+        this.id = movieId
     }
 
-    fun getMovieDetail() = movies
-    fun getTvShowDetail() = tvShows
+    fun getMovie(): LiveData<Movies> = repository.getMovieDetail(id)
 
-    fun setMovieList(id: String) {
-        for (movie in MovieData.generateMovieList()) {
-            if (movie.id == id) {
-                movies = movie
-            }
-        }
-    }
-
-    fun setTvShowList(id: String) {
-        for (tvShow in TvShowData.generateTvShowList()) {
-            if (tvShow.id == id) {
-                tvShows = tvShow
-            }
-        }
-    }
+    fun getTvShow(): LiveData<TvShow> = repository.getTvShowDetail(id)
 }

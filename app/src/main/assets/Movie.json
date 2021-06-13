@@ -1,0 +1,94 @@
+{
+  "movie": [
+    {
+      "name": "Army of The Dead",
+      "rating": "5.9",
+      "genre": "Action, Crime, Horror",
+      "year": "2021",
+      "desc": "Following a zombie outbreak in Las Vegas, a group of mercenaries take the ultimate gamble, venturing into the quarantine zone to pull off the greatest heist ever attempted.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/z8CExJekGrEThbpMXAmCFvvgoJR.jpg",
+      "id": "1"
+    },
+    {
+      "name": "Olympus Has Fallen",
+      "rating": "6.5",
+      "genre": "Action, Thriller",
+      "year": "2013",
+      "desc": "Secret Service agent Mike Banning finds himself trapped inside the White House in the wake of a terrorist attack and works with national security to rescue the President from his kidnappers.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gKnx04MxnKcf5uOdhHhAAkqcCg.jpg",
+      "id": "2"
+    },
+    {
+      "name": "London Has Fallen",
+      "rating": "6.9",
+      "genre": "Action, Thriller",
+      "year": "2016",
+      "desc": "In London for the Prime Minister's funeral, Mike Banning is caught up in a plot to assassinate all the attending world leaders.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wah9TViZDE4zfVsnIgwLB4zSxzH.jpg",
+      "id": "3"
+    },
+    {
+      "name": "Ghost Lab",
+      "rating": "5.3",
+      "genre": "Drama, Horror, Thriller",
+      "year": "2021",
+      "desc": "After witnessing a haunting in their hospital, two doctors become dangerously obsessed with obtaining scientific proof that ghosts exist.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vdMsMYfkHJ6mLht5QCg7Hl8hnEp.jpg",
+      "id": "4"
+    },
+    {
+      "name": "Mile 22",
+      "rating": "6.1",
+      "genre": "Action, Thriller",
+      "year": "2018",
+      "desc": "A small team of elite American intelligence officers, part of a top-secret tactical command unit, try to smuggle a mysterious police officer with sensitive information out of Indonesia.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2L8ehd95eSW9x7KINYtZmRkAlrZ.jpg",
+      "id": "5"
+    },
+    {
+      "name": "The Woman in The Window",
+      "rating": "5.7",
+      "genre": "Crime, Drama, Mystery",
+      "year": "2021",
+      "desc": "An agoraphobic woman living alone in New York begins spying on her new neighbors, only to witness a disturbing act of violence.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wcrjc1uwQaqoqtqi67Su4VCOYo0.jpg",
+      "id": "6"
+    },
+    {
+      "name": "From London to Bali",
+      "rating": "5.1",
+      "genre": "Drama, Romance",
+      "year": "2017",
+      "desc": "For Lukman (Ricky Harun), Dewi's (Jessica Milla) departure to London is a small apocalypse. He works odd jobs in order to catch up to London.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/yMb1zfM1m64zPaZU3goTZ6mpnHu.jpg",
+      "id": "7"
+    },
+    {
+      "name": "Sniper: Ghost Shooter",
+      "rating": "5.4",
+      "genre": "Action, Drama, Thriller",
+      "year": "2016",
+      "desc": "Snipers ordered to protect a gas pipeline from terrorists suspect a security breach when they're targeted by a ghost shooter who knows their location.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pk0OypQ6Z3rsOtl7r0UhTEEqu44.jpg",
+      "id": "8"
+    },
+    {
+      "name": "The Next Three Days",
+      "rating": "7.3",
+      "genre": "Action, Crime, Drama",
+      "year": "2010",
+      "desc": "A married couple's life is turned upside down when the wife is accused of a murder.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rXWk1S0Ka7WtkIbi5grCxaY98Dl.jpg",
+      "id": "9"
+    },
+    {
+      "name": "Final Destination",
+      "rating": "6.7",
+      "genre": "Horror, Thriller",
+      "year": "2000",
+      "desc": "Alex Browning is among a group of high school students readying themselves for a trip to Europe. When he suddenly has a premonition their airplane will crash, he screams to warn the others but instead he is thrown off of the plane.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5vxXrr1MqGsT4NNeRITpfDnl4Rq.jpg",
+      "id": "10"
+    }
+  ]
+}

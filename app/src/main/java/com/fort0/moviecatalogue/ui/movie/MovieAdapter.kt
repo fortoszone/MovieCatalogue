@@ -5,14 +5,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.fort0.moviecatalogue.data.Movies
+import com.bumptech.glide.request.RequestOptions
+import com.fort0.moviecatalogue.R
+import com.fort0.moviecatalogue.data.source.local.Movies
 import com.fort0.moviecatalogue.databinding.ItemRowBinding
 import com.fort0.moviecatalogue.ui.detail.DetailActivity
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     private val items = ArrayList<Movies>()
 
-    fun setItems(movie: ArrayList<Movies>?) {
+    fun setItems(movie: List<Movies>?) {
         if (movie.isNullOrEmpty()) return
         this.items.addAll(movie)
 
@@ -28,11 +30,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
                 Glide.with(itemView.context)
                     .load(movie.image)
+                    .apply(RequestOptions())
                     .into(ivImageDetail)
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.EXTRA_MOVIES, movie.id)
+                    intent.putExtra(DetailActivity.EXTRA_CONTENT, movie.id)
+                    intent.putExtra(DetailActivity.EXTRA_ATTRIBUTE, R.string.movie.toString())
 
                     itemView.context.startActivity(intent)
                 }

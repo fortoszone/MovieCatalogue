@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.fort0.moviecatalogue.data.TvShow
+import com.fort0.moviecatalogue.R
+import com.fort0.moviecatalogue.data.source.local.TvShow
 import com.fort0.moviecatalogue.databinding.ItemRowBinding
 import com.fort0.moviecatalogue.ui.detail.DetailActivity
 
 class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ListViewHolder>() {
     private val items = ArrayList<TvShow>()
 
-    fun setItems(tvShow: ArrayList<TvShow>?) {
+    fun setItems(tvShow: List<TvShow>?) {
         if (tvShow.isNullOrEmpty()) return
         this.items.addAll(tvShow)
 
@@ -32,7 +33,8 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ListViewHolder>() {
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.EXTRA_TVSHOW, tvShow.id)
+                    intent.putExtra(DetailActivity.EXTRA_CONTENT, tvShow.id)
+                    intent.putExtra(DetailActivity.EXTRA_ATTRIBUTE, R.string.tvshow.toString())
 
                     itemView.context.startActivity(intent)
                 }
