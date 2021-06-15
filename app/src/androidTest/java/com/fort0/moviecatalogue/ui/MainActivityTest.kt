@@ -33,17 +33,8 @@ class MainActivityTest {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.idlingResource)
     }
 
-    private fun delay() {
-        try {
-            Thread.sleep(1500)
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
-        }
-    }
-
     @Test
     fun loadMovieList() {
-        delay()
         onView(withId(R.id.rv_list)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_list)).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
@@ -54,7 +45,6 @@ class MainActivityTest {
 
     @Test
     fun loadTvSHowList() {
-        delay()
         onView(withId(R.id.rv_tvshow)).check(matches(isDisplayed()))
         onView(withId(R.id.rv_tvshow)).perform(
             RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
@@ -65,7 +55,6 @@ class MainActivityTest {
 
     @Test
     fun loadMovieDetail() {
-        delay()
         onView(withId(R.id.navigation_movie)).perform(ViewActions.click())
         onView(withId(R.id.rv_movies)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
@@ -73,8 +62,6 @@ class MainActivityTest {
                 ViewActions.click()
             )
         )
-
-        delay()
 
         onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_title)).check(matches(withText(movie[0].name)))
@@ -97,7 +84,6 @@ class MainActivityTest {
 
     @Test
     fun loadTvShowDetail() {
-        delay()
         onView(withId(R.id.navigation_tvshow)).perform(ViewActions.click())
         onView(withId(R.id.rv_tvshow)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
@@ -105,7 +91,6 @@ class MainActivityTest {
                 ViewActions.click()
             )
         )
-        delay()
 
         onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_title)).check(matches(withText(tvShow[0].name)))

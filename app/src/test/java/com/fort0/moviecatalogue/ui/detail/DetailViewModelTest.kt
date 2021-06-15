@@ -55,10 +55,11 @@ class DetailViewModelTest {
     fun getMovieDetail() {
         val movie = MutableLiveData<Movies>()
         movie.value = movies
+
         `when`(repository.getMovieDetail(movieId)).thenReturn(movie)
         viewModel.setSelectedItem(movieId)
-
         val movieList = viewModel.getMovie().value as Movies
+        verify(repository).getMovieDetail(movieId)
 
         Assert.assertNotNull(movieList)
         assertEquals(movies.id, movieList.id)
@@ -77,10 +78,11 @@ class DetailViewModelTest {
     fun getTvShowDetail() {
         val tvshow = MutableLiveData<TvShow>()
         tvshow.value = tvShows
+
         `when`(repository.getTvShowDetail(tvShowId)).thenReturn(tvshow)
         viewModel.setSelectedItem(tvShowId)
-
         val tvShowList = viewModel.getTvShow().value as TvShow
+        verify(repository).getTvShowDetail(movieId)
 
         Assert.assertNotNull(tvShowList)
         assertEquals(tvShows.id, tvShowList.id)
