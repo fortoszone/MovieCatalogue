@@ -17,7 +17,7 @@ import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class MovieViewModelTest {
+class FavoriteMovieViewModelTest {
     private lateinit var viewModel: MovieViewModel
 
     @get:Rule

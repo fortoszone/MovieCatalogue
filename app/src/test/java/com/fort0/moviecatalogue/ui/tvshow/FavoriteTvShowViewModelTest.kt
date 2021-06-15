@@ -4,9 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.fort0.moviecatalogue.data.source.Repository
-import com.fort0.moviecatalogue.data.source.local.Movies
 import com.fort0.moviecatalogue.data.source.local.TvShow
-import com.fort0.moviecatalogue.utils.MovieData
 import com.fort0.moviecatalogue.utils.TvShowData
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -19,7 +17,7 @@ import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class TvShowViewModelTest {
+class FavoriteTvShowViewModelTest {
     private lateinit var viewModel: TvShowViewModel
 
     @get:Rule
