@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.detail.DetailActivity">
 
+    <ProgressBar
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/progress_bar"
+        android:layout_centerInParent="true"/>
+
     <ImageView
         android:id="@+id/iv_image_detail"
         android:layout_width="135dp"
@@ -14,6 +20,7 @@
         android:src="@drawable/armyofthedead" />
 
     <LinearLayout
+        android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/card_view"

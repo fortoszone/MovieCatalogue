@@ -1,0 +1,94 @@
+{
+  "tvshow": [
+    {
+      "name": "Girl From Nowhere",
+      "rating": "7.7",
+      "genre": "Crime, Drama, Fantasy",
+      "year": "2018",
+      "desc": "A mysterious, clever girl named Nanno transfers to different schools, exposing the lies and misdeeds of the students and faculty at every turn.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9hDXqzN5l4lBmEtb8IstXr91k8z.jpg",
+      "id": "1"
+    },
+    {
+      "name": "Who Killed Sara?",
+      "rating": "6.5",
+      "genre": "Crime, Drama, Mystery",
+      "year": "2021",
+      "desc": "Hell-bent on exacting revenge and proving he was framed for his sister's murder, Álex sets out to unearth much more than the crime's real culprit.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/o7uk5ChRt3quPIv8PcvPfzyXdMw.jpg",
+      "id": "2"
+    },
+    {
+      "name": "Money Heist",
+      "rating": "8.3",
+      "genre": "Action, Crime, Mystery",
+      "year": "2017",
+      "desc": "An unusual group of robbers attempt to carry out the most perfect robbery in Spanish history - stealing 2.4 billion euros from the Royal Mint of Spain.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/MoEKaPFHABtA1xKoOteirGaHl1.jpg",
+      "id": "3"
+    },
+    {
+      "name": "Elite",
+      "rating": "7.5",
+      "genre": "Crime, Drama, Thriller",
+      "year": "2018",
+      "desc": "When three working-class teenagers begin attending an exclusive private school in Spain, the clash between them and the wealthy students leads to murder.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3NTAbAiao4JLzFQw6YxP1YZppM8.jpg",
+      "id": "4"
+    },
+    {
+      "name": "Lucifer",
+      "rating": "8.1",
+      "genre": "Crime, Drama, Fantasy",
+      "year": "2016",
+      "desc": "Lucifer Morningstar has decided he's had enough of being the dutiful servant in Hell and decides to spend some time on Earth to better understand humanity. He settles in Los Angeles - the City of Angels.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/4EYPN5mVIhKLfxGruy7Dy41dTVn.jpg",
+      "id": "5"
+    },
+    {
+      "name": "Lupin",
+      "rating": "7.6",
+      "genre": "Action, Crime, Drama",
+      "year": "2021",
+      "desc": "Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sgxawbFB5Vi5OkPWQLNfl3dvkNJ.jpg",
+      "id": "6"
+    },
+    {
+      "name": "Designated Survivor",
+      "rating": "7.5",
+      "genre": "Drama, Romance",
+      "year": "2016",
+      "desc": "A low-level Cabinet member becomes President of the United States after a catastrophic attack kills everyone above him in the line of succession.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5R125JAIh1N38pzHp2dRsBpOVNY.jpg",
+      "id": "7"
+    },
+    {
+      "name": "Love Alarm",
+      "rating": "7.1",
+      "genre": "Comedy, Drama, Romance",
+      "year": "2019",
+      "desc": "Snipers ordered to protect a gas pipeline from terrorists suspect a security breach when they're targeted by a ghost shooter who knows their location.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hQ8Hobo1RpYuZVQJQOCycNMHAG.jpg",
+      "id": "8"
+    },
+    {
+      "name": "Stranger Things",
+      "rating": "8.7",
+      "genre": "Drama, Fantasy, Horror",
+      "year": "2016",
+      "desc": "When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces in order to get him back.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg",
+      "id": "9"
+    },
+    {
+      "name": "You",
+      "rating": "7.7",
+      "genre": "Drama, Fantasy, Horror",
+      "year": "2018",
+      "desc": "A dangerously charming, intensely obsessive young man goes to extreme measures to insert himself into the lives of those he is transfixed by.",
+      "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9qZUrhcFVI9MNznVJxdfcrmifof.jpg",
+      "id": "10"
+    }
+  ]
+}

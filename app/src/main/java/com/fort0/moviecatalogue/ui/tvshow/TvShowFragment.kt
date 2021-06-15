@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fort0.moviecatalogue.R
-import com.fort0.moviecatalogue.databinding.FragmentMovieBinding
 import com.fort0.moviecatalogue.databinding.FragmentTvshowBinding
+import com.fort0.moviecatalogue.viewmodel.ViewModelFactory
 
 class TvShowFragment : Fragment() {
     private lateinit var binding: FragmentTvshowBinding
@@ -22,6 +22,10 @@ class TvShowFragment : Fragment() {
     ): View {
 
         binding = FragmentTvshowBinding.inflate(inflater, container, false)
+
+        binding.rvTvshow.visibility = View.INVISIBLE
+        binding.progressBar.visibility = View.VISIBLE
+
         return binding.root
     }
 
@@ -30,17 +34,20 @@ class TvShowFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
 
         if (activity != null) {
-            val viewModel = ViewModelProvider(
-                this,
-                ViewModelProvider.NewInstanceFactory()
-            )[TvShowViewModel::class.java]
-            val tvShowItem = viewModel.getTvShowList()
+            val factory = ViewModelFactory.getInstance(requireActivity())
+            val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
             val tvShowAdapter = TvShowAdapter()
-            tvShowAdapter.setItems(tvShowItem)
+
+            viewModel.getTvShowList().observe(viewLifecycleOwner, { tvshow ->
+                binding.rvTvshow.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.INVISIBLE
+                tvShowAdapter.setItems(tvshow)
+                tvShowAdapter.notifyDataSetChanged()
+            })
 
             with(binding.rvTvshow) {
-                this.layoutManager = LinearLayoutManager(context)
-                this.setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(context)
+                setHasFixedSize(true)
                 this.adapter = tvShowAdapter
             }
         }

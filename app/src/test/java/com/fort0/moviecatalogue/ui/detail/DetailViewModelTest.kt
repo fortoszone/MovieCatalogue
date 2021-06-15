@@ -1,57 +1,99 @@
 package com.fort0.moviecatalogue.ui.detail
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import com.fort0.moviecatalogue.data.source.Repository
+import com.fort0.moviecatalogue.data.source.local.Movies
+import com.fort0.moviecatalogue.data.source.local.TvShow
 import com.fort0.moviecatalogue.utils.MovieData
 import com.fort0.moviecatalogue.utils.TvShowData
 import junit.framework.Assert.assertEquals
 import org.junit.Assert
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.Mockito.`when`
+import org.mockito.Mockito.verify
+import org.mockito.junit.MockitoJUnitRunner
 
+@RunWith(MockitoJUnitRunner::class)
 class DetailViewModelTest {
-    private lateinit var viewModel: DetailViewModel
     private var movies = MovieData.generateMovieList()[0]
-    private var tvShow = TvShowData.generateTvShowList()[0]
-
+    private var tvShows = TvShowData.generateTvShowList()[0]
     private val movieId = movies.id
-    private val tvShowId = tvShow.id
+    private val tvShowId = tvShows.id
+    private lateinit var viewModel: DetailViewModel
 
-    @Test
-    fun getMovieDetail() {
-        viewModel.setMovieList(movieId)
-        val movie = viewModel.getMovieDetail()
-        Assert.assertNotNull(movie)
-        assertEquals(movies.id, movie.id)
-        assertEquals(movies.image, movie.image)
-        assertEquals(movies.name, movie.name)
-        assertEquals(movies.year, movie.year)
-        assertEquals(movies.viewerRating, movie.viewerRating)
-        assertEquals(movies.genre, movie.genre)
-        assertEquals(movies.description, movie.description)
-    }
+    @get:Rule
+    var instantTaskExecutorRule = InstantTaskExecutorRule() //asynchronous
 
-    @Test
-    fun getTvShowDetail() {
-        viewModel.setTvShowList(tvShowId)
-        val tvshow = viewModel.getTvShowDetail()
-        Assert.assertNotNull(tvshow)
-        assertEquals(tvShow.id, tvshow.id)
-        assertEquals(tvShow.image, tvshow.image)
-        assertEquals(tvShow.name, tvshow.name)
-        assertEquals(tvShow.year, tvshow.year)
-        assertEquals(tvShow.viewerRating, tvshow.viewerRating)
-        assertEquals(tvShow.genre, tvshow.genre)
-        assertEquals(tvShow.description, tvshow.description)
-    }
+    @Mock
+    private lateinit var repository: Repository
+
+    @Mock
+    private lateinit var movieObserver: Observer<Movies>
+
+    @Mock
+    private lateinit var tvshowObserver: Observer<TvShow>
 
     @Before
-    fun setMovieList() {
-        viewModel = DetailViewModel()
-        viewModel.setMovieList(movieId)
+    fun setList() {
+        viewModel = DetailViewModel(repository)
+        viewModel.setSelectedItem(movieId)
     }
 
     @Before
     fun setTvShowList() {
-        viewModel = DetailViewModel()
-        viewModel.setTvShowList(tvShowId)
+        viewModel = DetailViewModel(repository)
+        viewModel.setSelectedItem(tvShowId)
+    }
+
+    @Test
+    fun getMovieDetail() {
+        val movie = MutableLiveData<Movies>()
+        movie.value = movies
+
+        `when`(repository.getMovieDetail(movieId)).thenReturn(movie)
+        viewModel.setSelectedItem(movieId)
+        val movieList = viewModel.getMovie().value as Movies
+        verify(repository).getMovieDetail(movieId)
+
+        Assert.assertNotNull(movieList)
+        assertEquals(movies.id, movieList.id)
+        assertEquals(movies.image, movieList.image)
+        assertEquals(movies.name, movieList.name)
+        assertEquals(movies.year, movieList.year)
+        assertEquals(movies.viewerRating, movieList.viewerRating)
+        assertEquals(movies.genre, movieList.genre)
+        assertEquals(movies.description, movieList.description)
+
+        viewModel.getMovie().observeForever(movieObserver)
+        verify(movieObserver).onChanged(movies)
+    }
+
+    @Test
+    fun getTvShowDetail() {
+        val tvshow = MutableLiveData<TvShow>()
+        tvshow.value = tvShows
+
+        `when`(repository.getTvShowDetail(tvShowId)).thenReturn(tvshow)
+        viewModel.setSelectedItem(tvShowId)
+        val tvShowList = viewModel.getTvShow().value as TvShow
+        verify(repository).getTvShowDetail(movieId)
+
+        Assert.assertNotNull(tvShowList)
+        assertEquals(tvShows.id, tvShowList.id)
+        assertEquals(tvShows.image, tvShowList.image)
+        assertEquals(tvShows.name, tvShowList.name)
+        assertEquals(tvShows.year, tvShowList.year)
+        assertEquals(tvShows.viewerRating, tvShowList.viewerRating)
+        assertEquals(tvShows.genre, tvShowList.genre)
+        assertEquals(tvShows.description, tvShowList.description)
+
+        viewModel.getTvShow().observeForever(tvshowObserver)
+        verify(tvshowObserver).onChanged(tvShows)
     }
 }
