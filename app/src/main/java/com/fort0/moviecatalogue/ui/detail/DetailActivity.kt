@@ -121,7 +121,6 @@ class DetailActivity : AppCompatActivity() {
 
                     viewModel.getTvShowFromDb().observe(this) {
                         if (it != null) {
-                            Toast.makeText(this, "$isFavorite", Toast.LENGTH_SHORT).show()
                             if (it.isFavorite) {
                                 binding.fabFavorites.setImageDrawable(
                                     ContextCompat.getDrawable(

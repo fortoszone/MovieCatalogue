@@ -1,14 +1,16 @@
 package com.fort0.moviecatalogue.data.source
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.paging.DataSource
+import com.fort0.moviecatalogue.PagedListUtil
+import com.fort0.moviecatalogue.data.source.local.Movies
+import com.fort0.moviecatalogue.data.source.local.TvShow
 import com.fort0.moviecatalogue.data.source.remote.RemoteDataSource
 import com.fort0.moviecatalogue.room.LocalDataSource
-import com.fort0.moviecatalogue.utils.AppExecutors
-import com.fort0.moviecatalogue.utils.LiveDataTestUtil
-import com.fort0.moviecatalogue.utils.MovieData
-import com.fort0.moviecatalogue.utils.TvShowData
+import com.fort0.moviecatalogue.utils.*
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
+import junit.framework.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Rule
@@ -20,7 +22,6 @@ class RepositoryTest {
     private val remote = Mockito.mock(RemoteDataSource::class.java)
     private val local = Mockito.mock(LocalDataSource::class.java)
     private val executor = Mockito.mock(AppExecutors::class.java)
-
 
     private val repository = FakeRepository(remote, local, executor)
 
@@ -35,15 +36,15 @@ class RepositoryTest {
 
     @Test
     fun getMovieList() {
-        doAnswer { invocation ->
-            (invocation.arguments[0] as RemoteDataSource.LoadMovieCallback)
-                .onAllMoviesReceived(movieResponses)
-            null
-        }.`when`(remote).getCallbackMovie(any())
-        val movieEntities = LiveDataTestUtil.getValue(repository.getMovieList())
-        verify(remote).getCallbackMovie(any())
-        assertNotNull(movieEntities)
-        assertEquals(10L, movieEntities.data?.size?.toLong())
+        val dataSourceFactory =
+            Mockito.mock(DataSource.Factory::class.java) as DataSource.Factory<Int, Movies>
+        Mockito.`when`(local.getMovies()).thenReturn(dataSourceFactory)
+        repository.getMovieList()
+
+        val entities = Resource.success(PagedListUtil.mockPagedList(movieResponses))
+        verify(local).getMovies()
+        Assert.assertNotNull(entities.data)
+        assertEquals(10L, entities.data?.size?.toLong())
 
     }
 
@@ -63,15 +64,15 @@ class RepositoryTest {
 
     @Test
     fun getTvShowList() {
-        doAnswer { invocation ->
-            (invocation.arguments[0] as RemoteDataSource.LoadTvShowCallback)
-                .onAllTvShowReceived(tvshowResponse)
-            null
-        }.`when`(remote).getCallbackTvShow(any())
-        val tvshowEntities = LiveDataTestUtil.getValue(repository.getTvShowList())
-        verify(remote).getCallbackTvShow(any())
-        assertNotNull(tvshowEntities)
-        assertEquals(10L, tvshowEntities.data?.size?.toLong())
+        val dataSourceFactory =
+            Mockito.mock(DataSource.Factory::class.java) as DataSource.Factory<Int, TvShow>
+        Mockito.`when`(local.getTvShow()).thenReturn(dataSourceFactory)
+        repository.getTvShowList()
+
+        val entities = Resource.success(PagedListUtil.mockPagedList(movieResponses))
+        verify(local).getTvShow()
+        Assert.assertNotNull(entities.data)
+        assertEquals(10L, entities.data?.size?.toLong())
     }
 
     @Test

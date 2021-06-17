@@ -29,8 +29,8 @@ class FavoriteFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
 
         val adapter = FavoritePagerAdapter(childFragmentManager)
-        adapter.addFragment(FavoriteTvShowFragment(), getString(R.string.title_tv_show))
-        adapter.addFragment(FavoriteMovieFragment(), getString(R.string.title_movies))
+        adapter.addFragment(FavoriteTvShowFragment(), getString(R.string.tvshow_tab))
+        adapter.addFragment(FavoriteMovieFragment(), getString(R.string.movie_tab))
         binding.viewPager.adapter = adapter
         binding.tabs.setupWithViewPager(binding.viewPager)
 
