@@ -33,6 +33,7 @@ class DetailActivity : AppCompatActivity() {
         binding.ivImageDetail.visibility = View.INVISIBLE
         binding.cardView.visibility = View.INVISIBLE
         binding.info.visibility = View.INVISIBLE
+        binding.fabFavorites.visibility = View.INVISIBLE
 
         val factory = ViewModelFactory.getInstance(this)
         val viewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
@@ -50,6 +51,7 @@ class DetailActivity : AppCompatActivity() {
                         binding.ivImageDetail.visibility = View.VISIBLE
                         binding.cardView.visibility = View.VISIBLE
                         binding.info.visibility = View.VISIBLE
+                        binding.fabFavorites.visibility = View.VISIBLE
                         getMovieDetail(movie)
                         movies = movie
                     })
@@ -112,6 +114,7 @@ class DetailActivity : AppCompatActivity() {
                         binding.ivImageDetail.visibility = View.VISIBLE
                         binding.cardView.visibility = View.VISIBLE
                         binding.info.visibility = View.VISIBLE
+                        binding.fabFavorites.visibility = View.VISIBLE
                         getTvShowDetail(tvshow)
                         tvshows = tvshow
                     })
