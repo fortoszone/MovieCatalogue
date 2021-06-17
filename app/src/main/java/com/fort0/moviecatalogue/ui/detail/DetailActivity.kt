@@ -2,6 +2,7 @@ package com.fort0.moviecatalogue.ui.detail
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -10,9 +11,12 @@ import com.fort0.moviecatalogue.data.source.local.Movies
 import com.fort0.moviecatalogue.data.source.local.TvShow
 import com.fort0.moviecatalogue.databinding.ActivityDetailBinding
 import com.fort0.moviecatalogue.viewmodel.ViewModelFactory
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
+    private var isFavorite: Boolean = false
 
     companion object {
         const val EXTRA_CONTENT = "extra_content"
@@ -35,6 +39,8 @@ class DetailActivity : AppCompatActivity() {
         if (intent != null) {
             val content = intent.getString(EXTRA_CONTENT)
             val attribute = intent.getString(EXTRA_ATTRIBUTE)
+            val tvshow: TvShow? = null
+            val movie: Movies? = null
 
             if (attribute.equals(R.string.movie.toString(), ignoreCase = true)) {
                 if (content != null) {
@@ -46,6 +52,30 @@ class DetailActivity : AppCompatActivity() {
                         binding.info.visibility = View.VISIBLE
                         getMovieDetail(movies)
                     })
+
+                    binding.fabFavorites.setOnClickListener {
+                        if (isFavorite) {
+                            GlobalScope.launch {
+                                if (movie != null) {
+                                    viewModel.deleteMovieFromFavorite(movie)
+                                }
+                            }
+
+                            Toast.makeText(this, "Added to favorite", Toast.LENGTH_SHORT).show()
+
+                        } else {
+                            GlobalScope.launch {
+                                if (movie != null) {
+                                    viewModel.addMovieToFavorite(movie)
+                                }
+                            }
+
+                            Toast.makeText(this, "Removed from favorite", Toast.LENGTH_SHORT).show()
+
+                        }
+
+                        isFavorite = !isFavorite
+                    }
                 }
             }
 
@@ -59,6 +89,37 @@ class DetailActivity : AppCompatActivity() {
                         binding.info.visibility = View.VISIBLE
                         getTvShowDetail(tvshow)
                     })
+
+                    binding.fabFavorites.setOnClickListener {
+                        if (isFavorite) {
+                            GlobalScope.launch {
+                                if (tvshow != null) {
+                                    viewModel.deleteTvShowFromFavorite(tvshow)
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "Added to favorite",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            }
+
+
+                        } else {
+                            GlobalScope.launch {
+                                if (tvshow != null) {
+                                    viewModel.addTvShowToFavorite(tvshow)
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "Removed from favorite",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+
+                                }
+                            }
+                        }
+
+                        isFavorite = !isFavorite
+                    }
                 }
             }
         }

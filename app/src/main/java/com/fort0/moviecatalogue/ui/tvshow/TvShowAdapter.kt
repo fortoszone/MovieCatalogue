@@ -1,8 +1,11 @@
 package com.fort0.moviecatalogue.ui.tvshow
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fort0.moviecatalogue.R
@@ -10,13 +13,22 @@ import com.fort0.moviecatalogue.data.source.local.TvShow
 import com.fort0.moviecatalogue.databinding.ItemRowBinding
 import com.fort0.moviecatalogue.ui.detail.DetailActivity
 
-class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ListViewHolder>() {
+class TvShowAdapter :
+    PagedListAdapter<TvShow, TvShowAdapter.ListViewHolder>(DIFF_CALLBACK) {
     private val items = ArrayList<TvShow>()
 
-    fun setItems(tvShow: List<TvShow>?) {
-        if (tvShow.isNullOrEmpty()) return
-        this.items.addAll(tvShow)
+    companion object {
+        private val DIFF_CALLBACK: DiffUtil.ItemCallback<TvShow> =
+            object : DiffUtil.ItemCallback<TvShow>() {
+                override fun areItemsTheSame(old: TvShow, new: TvShow): Boolean {
+                    return old.id == new.id
+                }
 
+                @SuppressLint("DiffUtilEquals")
+                override fun areContentsTheSame(old: TvShow, new: TvShow): Boolean {
+                    return old == new
+                }
+            }
     }
 
     inner class ListViewHolder(private val binding: ItemRowBinding) :

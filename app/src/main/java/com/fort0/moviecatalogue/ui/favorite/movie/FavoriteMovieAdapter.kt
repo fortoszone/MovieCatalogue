@@ -1,8 +1,11 @@
 package com.fort0.moviecatalogue.ui.favorite.movie
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fort0.moviecatalogue.R
@@ -10,14 +13,24 @@ import com.fort0.moviecatalogue.data.source.local.Movies
 import com.fort0.moviecatalogue.databinding.ItemRowBinding
 import com.fort0.moviecatalogue.ui.detail.DetailActivity
 
-class FavoriteMovieAdapter : RecyclerView.Adapter<FavoriteMovieAdapter.MovieViewHolder>() {
+class FavoriteMovieAdapter :
+    PagedListAdapter<Movies, FavoriteMovieAdapter.MovieViewHolder>(DIFF_CALLBACK) {
     private val items = ArrayList<Movies>()
 
-    fun setItems(movie: List<Movies>?) {
-        if (movie.isNullOrEmpty()) return
-        this.items.addAll(movie)
+    companion object {
+        private val DIFF_CALLBACK: DiffUtil.ItemCallback<Movies> =
+            object : DiffUtil.ItemCallback<Movies>() {
+                override fun areItemsTheSame(old: Movies, new: Movies): Boolean {
+                    return old.id == new.id
+                }
 
+                @SuppressLint("DiffUtilEquals")
+                override fun areContentsTheSame(old: Movies, new: Movies): Boolean {
+                    return old == new
+                }
+            }
     }
+
 
     inner class MovieViewHolder(private val binding: ItemRowBinding) :
         RecyclerView.ViewHolder(binding.root) {

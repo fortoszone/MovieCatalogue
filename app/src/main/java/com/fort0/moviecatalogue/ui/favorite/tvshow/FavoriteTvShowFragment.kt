@@ -20,6 +20,7 @@ class FavoriteTvShowFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
 
         binding = FragmentTvshowBinding.inflate(inflater, container, false)
 
@@ -31,7 +32,6 @@ class FavoriteTvShowFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
 
         if (activity != null) {
             val factory = ViewModelFactory.getInstance(requireActivity())
@@ -41,7 +41,7 @@ class FavoriteTvShowFragment : Fragment() {
             viewModel.getTvShowList().observe(viewLifecycleOwner, { tvshow ->
                 binding.rvTvshow.visibility = View.VISIBLE
                 binding.progressBar.visibility = View.INVISIBLE
-                tvShowAdapter.setItems(tvshow)
+                tvShowAdapter.submitList(tvshow)
                 tvShowAdapter.notifyDataSetChanged()
             })
 

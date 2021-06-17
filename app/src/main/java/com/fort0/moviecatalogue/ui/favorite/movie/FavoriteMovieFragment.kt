@@ -20,6 +20,8 @@ class FavoriteMovieFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
+
         binding = FragmentMovieBinding.inflate(layoutInflater, container, false)
 
         binding.rvMovies.visibility = View.INVISIBLE
@@ -30,7 +32,6 @@ class FavoriteMovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
 
         if (activity != null) {
             val factory = ViewModelFactory.getInstance(requireActivity())
@@ -40,7 +41,7 @@ class FavoriteMovieFragment : Fragment() {
             viewModel.getMovieList().observe(viewLifecycleOwner, { movies ->
                 binding.rvMovies.visibility = View.VISIBLE
                 binding.progressBar.visibility = View.INVISIBLE
-                movieAdapter.setItems(movies)
+                movieAdapter.submitList(movies)
                 movieAdapter.notifyDataSetChanged()
             })
 
