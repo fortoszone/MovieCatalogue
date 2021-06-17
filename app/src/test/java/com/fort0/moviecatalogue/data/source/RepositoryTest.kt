@@ -2,6 +2,8 @@ package com.fort0.moviecatalogue.data.source
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.fort0.moviecatalogue.data.source.remote.RemoteDataSource
+import com.fort0.moviecatalogue.room.LocalDataSource
+import com.fort0.moviecatalogue.utils.AppExecutors
 import com.fort0.moviecatalogue.utils.LiveDataTestUtil
 import com.fort0.moviecatalogue.utils.MovieData
 import com.fort0.moviecatalogue.utils.TvShowData
@@ -16,7 +18,11 @@ import org.mockito.Mockito.doAnswer
 
 class RepositoryTest {
     private val remote = Mockito.mock(RemoteDataSource::class.java)
-    private val repository = FakeRepository(remote)
+    private val local = Mockito.mock(LocalDataSource::class.java)
+    private val executor = Mockito.mock(AppExecutors::class.java)
+
+
+    private val repository = FakeRepository(remote, local, executor)
 
     private val movieResponses = MovieData.generateRemoteMovieList()
     private val tvshowResponse = TvShowData.generateRemoteTvShowList()
@@ -37,7 +43,7 @@ class RepositoryTest {
         val movieEntities = LiveDataTestUtil.getValue(repository.getMovieList())
         verify(remote).getCallbackMovie(any())
         assertNotNull(movieEntities)
-        assertEquals(movieResponses.size.toLong(), movieEntities.size.toLong())
+        assertEquals(10L, movieEntities.data?.size?.toLong())
 
     }
 
@@ -65,7 +71,7 @@ class RepositoryTest {
         val tvshowEntities = LiveDataTestUtil.getValue(repository.getTvShowList())
         verify(remote).getCallbackTvShow(any())
         assertNotNull(tvshowEntities)
-        assertEquals(tvshowResponse.size.toLong(), tvshowEntities.size.toLong())
+        assertEquals(10L, tvshowEntities.data?.size?.toLong())
     }
 
     @Test

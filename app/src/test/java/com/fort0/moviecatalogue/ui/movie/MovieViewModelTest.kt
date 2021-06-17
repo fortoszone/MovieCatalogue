@@ -3,9 +3,10 @@ package com.fort0.moviecatalogue.ui.movie
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.paging.PagedList
 import com.fort0.moviecatalogue.data.source.Repository
 import com.fort0.moviecatalogue.data.source.local.Movies
-import com.fort0.moviecatalogue.utils.MovieData
+import com.fort0.moviecatalogue.utils.Resource
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
@@ -17,7 +18,7 @@ import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class FavoriteMovieViewModelTest {
+class MovieViewModelTest {
     private lateinit var viewModel: MovieViewModel
 
     @get:Rule
@@ -27,7 +28,10 @@ class FavoriteMovieViewModelTest {
     private lateinit var repository: Repository
 
     @Mock
-    private lateinit var observer: Observer<List<Movies>>
+    private lateinit var observer: Observer<Resource<PagedList<Movies>>>
+
+    @Mock
+    private lateinit var pagedList: PagedList<Movies>
 
     @Before
     fun setUp() {
@@ -36,8 +40,9 @@ class FavoriteMovieViewModelTest {
 
     @Test
     fun getMovieList() {
-        val dummyMovies = MovieData.generateMovieList()
-        val movie = MutableLiveData<List<Movies>>()
+        val dummyMovies = Resource.success(pagedList)
+        Mockito.`when`(dummyMovies.data?.size).thenReturn(5)
+        val movie = MutableLiveData<Resource<PagedList<Movies>>>()
         movie.value = dummyMovies
 
         Mockito.`when`(repository.getMovieList()).thenReturn(movie)
@@ -45,7 +50,7 @@ class FavoriteMovieViewModelTest {
         Mockito.verify(repository).getMovieList()
 
         assertNotNull(movieList)
-        assertEquals(10, movieList?.size)
+        assertEquals(5, movieList?.data?.size)
 
         viewModel.getMovieList().observeForever(observer)
         Mockito.verify(observer).onChanged(dummyMovies)
