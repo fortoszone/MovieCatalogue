@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -46,7 +45,6 @@ class MovieFragment : Fragment() {
                         binding.progressBar.visibility = View.INVISIBLE
                         movieAdapter.submitList(movies.data)
                         movieAdapter.notifyDataSetChanged()
-                        Toast.makeText(context, "${movies.data}", Toast.LENGTH_SHORT).show()
                     }
 
                     Status.ERROR -> Log.e("error", movies.message.toString())

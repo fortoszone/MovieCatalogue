@@ -9,7 +9,6 @@ import com.fort0.moviecatalogue.utils.Resource
 interface DataSource {
     fun getMovieList(): LiveData<Resource<PagedList<Movies>>>
     fun getMovieDetail(movieId: String): LiveData<Movies>
-
     fun getTvShowList(): LiveData<Resource<PagedList<TvShow>>>
     fun getTvShowDetail(tvshowId: String): LiveData<TvShow>
     fun addTvShowToFavorite(id: String, isFavorite: Boolean)

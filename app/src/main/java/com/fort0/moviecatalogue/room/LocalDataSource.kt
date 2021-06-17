@@ -20,7 +20,7 @@ class LocalDataSource private constructor(
     fun getFavoriteMovie() = movieDao.getFavoriteMovie()
     fun getMovieById(id: String) = movieDao.getMovieById(id)
     fun insertMovie(movie: Movies) = movieDao.insertMovie(movie)
-    fun insertMovies(movieList: ArrayList<Movies>) = movieDao.insertMovies(movieList)
+    fun insertMovies(movieList: List<Movies>) = movieDao.insertMovies(movieList)
     fun favoriteMovie(id: String, isFavorite: Boolean) =
         movieDao.addMovieToFavorites(id, isFavorite)
 

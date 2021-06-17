@@ -82,12 +82,12 @@ class DetailActivity : AppCompatActivity() {
             if (attribute.equals(R.string.tvshow.toString(), ignoreCase = true)) {
                 if (content != null) {
                     viewModel.setSelectedItem(content)
-                    viewModel.getTvShow().observe(this, { tvshow ->
+                    viewModel.getTvShow().observe(this, { tvshows ->
                         binding.progressBar.visibility = View.INVISIBLE
                         binding.ivImageDetail.visibility = View.VISIBLE
                         binding.cardView.visibility = View.VISIBLE
                         binding.info.visibility = View.VISIBLE
-                        getTvShowDetail(tvshow)
+                        getTvShowDetail(tvshows)
                     })
 
                     binding.fabFavorites.setOnClickListener {

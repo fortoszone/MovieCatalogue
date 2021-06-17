@@ -15,7 +15,6 @@ import com.fort0.moviecatalogue.ui.detail.DetailActivity
 
 class MovieAdapter :
     PagedListAdapter<Movies, MovieAdapter.MovieViewHolder>(DIFF_CALLBACK) {
-    private val items = ArrayList<Movies>()
 
     companion object {
         private val DIFF_CALLBACK: DiffUtil.ItemCallback<Movies> =
@@ -63,10 +62,6 @@ class MovieAdapter :
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(items[position])
-    }
-
-    override fun getItemCount(): Int {
-        return items.size
+        getItem(position)?.let { holder.bind(it) }
     }
 }

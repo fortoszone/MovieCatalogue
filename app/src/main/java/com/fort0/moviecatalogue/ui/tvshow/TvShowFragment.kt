@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -37,19 +36,18 @@ class TvShowFragment : Fragment() {
             val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
             val tvShowAdapter = TvShowAdapter()
 
-            viewModel.getTvShowList().observe(viewLifecycleOwner, { tvshow ->
-                when (tvshow.status) {
+            viewModel.getTvShowList().observe(viewLifecycleOwner, { tvshows ->
+                when (tvshows.status) {
                     Status.LOADING -> binding.progressBar.visibility = View.VISIBLE
 
                     Status.SUCCESS -> {
                         binding.rvTvshow.visibility = View.VISIBLE
                         binding.progressBar.visibility = View.INVISIBLE
-                        tvShowAdapter.submitList(tvshow.data)
+                        tvShowAdapter.submitList(tvshows.data)
                         tvShowAdapter.notifyDataSetChanged()
-                        Toast.makeText(context, "${tvshow.data}", Toast.LENGTH_SHORT).show()
                     }
 
-                    Status.ERROR -> Log.e("error", tvshow.message.toString())
+                    Status.ERROR -> Log.e("error", tvshows.message.toString())
                 }
             })
 

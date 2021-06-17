@@ -15,7 +15,6 @@ import com.fort0.moviecatalogue.ui.detail.DetailActivity
 
 class TvShowAdapter :
     PagedListAdapter<TvShow, TvShowAdapter.ListViewHolder>(DIFF_CALLBACK) {
-    private val items = ArrayList<TvShow>()
 
     companion object {
         private val DIFF_CALLBACK: DiffUtil.ItemCallback<TvShow> =
@@ -61,11 +60,7 @@ class TvShowAdapter :
 
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
-
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(items[position])
+        getItem(position)?.let { holder.bind(it) }
     }
 }
