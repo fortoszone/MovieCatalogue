@@ -8,7 +8,6 @@ class LocalDataSource private constructor(
     private val tvShowDao: TvShowDao
 
 ) {
-
     companion object {
         private var INSTANCE: LocalDataSource? = null
 

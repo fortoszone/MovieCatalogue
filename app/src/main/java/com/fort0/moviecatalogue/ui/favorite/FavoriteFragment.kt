@@ -18,13 +18,6 @@ class FavoriteFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FragmentFavoriteBinding.inflate(layoutInflater)
-
-        val adapter = FavoritePagerAdapter(childFragmentManager)
-        adapter.addFragment(FavoriteTvShowFragment(), getString(R.string.title_tv_show))
-        adapter.addFragment(FavoriteMovieFragment(), getString(R.string.title_movies))
-        binding.viewPager.adapter = adapter
-        binding.tabs.setupWithViewPager(binding.viewPager)
-
     }
 
     override fun onCreateView(
@@ -33,12 +26,14 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFavoriteBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
 
+        val adapter = FavoritePagerAdapter(childFragmentManager)
+        adapter.addFragment(FavoriteTvShowFragment(), getString(R.string.title_tv_show))
+        adapter.addFragment(FavoriteMovieFragment(), getString(R.string.title_movies))
+        binding.viewPager.adapter = adapter
+        binding.tabs.setupWithViewPager(binding.viewPager)
+
+        return binding.root
     }
 }

@@ -40,18 +40,18 @@ class DetailActivity : AppCompatActivity() {
         if (intent != null) {
             val content = intent.getString(EXTRA_CONTENT)
             val attribute = intent.getString(EXTRA_ATTRIBUTE)
-            val tvshow: TvShow? = null
-            val movie: Movies? = null
 
             if (attribute.equals(R.string.movie.toString(), ignoreCase = true)) {
                 if (content != null) {
+                    var movies: Movies? = null
                     viewModel.setSelectedItem(content)
-                    viewModel.getMovie().observe(this, { movies ->
+                    viewModel.getMovie().observe(this, { movie ->
                         binding.progressBar.visibility = View.INVISIBLE
                         binding.ivImageDetail.visibility = View.VISIBLE
                         binding.cardView.visibility = View.VISIBLE
                         binding.info.visibility = View.VISIBLE
-                        getMovieDetail(movies)
+                        getMovieDetail(movie)
+                        movies = movie
                     })
 
                     viewModel.getMoviesFromDb().observe(this) {
@@ -62,6 +62,7 @@ class DetailActivity : AppCompatActivity() {
                                         this@DetailActivity, R.drawable.ic_baseline_favorite_24
                                     )
                                 )
+
                                 isFavorite = true
                             } else {
                                 binding.fabFavorites.setImageDrawable(
@@ -71,29 +72,30 @@ class DetailActivity : AppCompatActivity() {
                                     )
                                 )
                                 isFavorite = false
+
                             }
                         }
                     }
 
                     binding.fabFavorites.setOnClickListener {
                         if (isFavorite) {
-                            GlobalScope.launch {
-                                if (movie != null) {
-                                    viewModel.deleteMovieFromFavorite(movie)
-                                }
-                            }
-
-                            Toast.makeText(this, "Added to favorite", Toast.LENGTH_SHORT).show()
+                            GlobalScope.launch { viewModel.deleteMovieFromFavorite(movies) }
+                            Toast.makeText(this, "Removed from favorite", Toast.LENGTH_SHORT).show()
+                            binding.fabFavorites.setImageDrawable(
+                                ContextCompat.getDrawable(
+                                    this@DetailActivity, R.drawable.ic_baseline_favorite_border_24
+                                )
+                            )
 
                         } else {
-                            GlobalScope.launch {
-                                if (movie != null) {
-                                    viewModel.addMovieToFavorite(movie)
-                                }
-                            }
-
-                            Toast.makeText(this, "Removed from favorite", Toast.LENGTH_SHORT).show()
-
+                            GlobalScope.launch { viewModel.addMovieToFavorite(movies) }
+                            Toast.makeText(this, "Added to favorite", Toast.LENGTH_SHORT).show()
+                            binding.fabFavorites.setImageDrawable(
+                                ContextCompat.getDrawable(
+                                    this@DetailActivity,
+                                    R.drawable.ic_baseline_favorite_24
+                                )
+                            )
                         }
 
                         isFavorite = !isFavorite
@@ -103,43 +105,70 @@ class DetailActivity : AppCompatActivity() {
 
             if (attribute.equals(R.string.tvshow.toString(), ignoreCase = true)) {
                 if (content != null) {
+                    var tvshows: TvShow? = null
                     viewModel.setSelectedItem(content)
-                    viewModel.getTvShow().observe(this, { tvshows ->
+                    viewModel.getTvShow().observe(this, { tvshow ->
                         binding.progressBar.visibility = View.INVISIBLE
                         binding.ivImageDetail.visibility = View.VISIBLE
                         binding.cardView.visibility = View.VISIBLE
                         binding.info.visibility = View.VISIBLE
-                        getTvShowDetail(tvshows)
+                        getTvShowDetail(tvshow)
+                        tvshows = tvshow
                     })
+
+                    viewModel.getTvShowFromDb().observe(this) {
+                        if (it != null) {
+                            Toast.makeText(this, "$isFavorite", Toast.LENGTH_SHORT).show()
+                            if (it.isFavorite) {
+                                binding.fabFavorites.setImageDrawable(
+                                    ContextCompat.getDrawable(
+                                        this@DetailActivity, R.drawable.ic_baseline_favorite_24
+                                    )
+                                )
+
+                                isFavorite = true
+                            } else {
+                                binding.fabFavorites.setImageDrawable(
+                                    ContextCompat.getDrawable(
+                                        this@DetailActivity,
+                                        R.drawable.ic_baseline_favorite_border_24
+                                    )
+                                )
+                                isFavorite = false
+
+                            }
+                        }
+                    }
 
                     binding.fabFavorites.setOnClickListener {
                         if (isFavorite) {
-                            GlobalScope.launch {
-                                if (tvshow != null) {
-                                    viewModel.deleteTvShowFromFavorite(tvshow)
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "Added to favorite",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                            }
+                            GlobalScope.launch { viewModel.deleteTvShowFromFavorite(tvshows) }
+                            Toast.makeText(
+                                applicationContext,
+                                "Removed from favorite",
+                                Toast.LENGTH_SHORT
+                            ).show()
 
-
+                            binding.fabFavorites.setImageDrawable(
+                                ContextCompat.getDrawable(
+                                    this@DetailActivity, R.drawable.ic_baseline_favorite_border_24
+                                )
+                            )
                         } else {
-                            GlobalScope.launch {
-                                if (tvshow != null) {
-                                    viewModel.addTvShowToFavorite(tvshow)
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "Removed from favorite",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+                            GlobalScope.launch { viewModel.addTvShowToFavorite(tvshows) }
+                            Toast.makeText(
+                                applicationContext,
+                                "Added to favorite",
+                                Toast.LENGTH_SHORT
+                            ).show()
 
-                                }
-                            }
+                            binding.fabFavorites.setImageDrawable(
+                                ContextCompat.getDrawable(
+                                    this@DetailActivity,
+                                    R.drawable.ic_baseline_favorite_24
+                                )
+                            )
                         }
-
                         isFavorite = !isFavorite
                     }
                 }

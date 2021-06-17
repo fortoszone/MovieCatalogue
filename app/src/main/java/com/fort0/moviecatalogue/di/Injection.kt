@@ -11,7 +11,7 @@ import com.fort0.moviecatalogue.utils.JsonHelper
 object Injection {
     fun provideRepository(context: Context): Repository {
         val db = AppDatabase.getInstance(context)
-        val localDataSource = LocalDataSource.getInstance(db.movieDao(), db.tvShowDao())
+        val localDataSource = LocalDataSource.getInstance(db!!.movieDao(), db.tvShowDao())
         val remoteDataSource = RemoteDataSource.getInstance(JsonHelper(context))
         val appExecutors = AppExecutors()
 

@@ -203,11 +203,11 @@ class Repository private constructor(
         return localDataSource.getTvShowById(id)
     }
 
-    override fun addMovieToFavorite(id: String, isFavorite: Boolean) {
+    override fun movieFavoriteState(id: String, isFavorite: Boolean) {
         localDataSource.favoriteMovie(id, isFavorite)
     }
 
-    override fun addTvShowToFavorite(id: String, isFavorite: Boolean) {
+    override fun tvShowFavoriteState(id: String, isFavorite: Boolean) {
         localDataSource.favoriteTvShow(id, isFavorite)
     }
 }

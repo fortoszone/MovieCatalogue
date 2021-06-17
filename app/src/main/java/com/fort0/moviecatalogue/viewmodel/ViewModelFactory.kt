@@ -7,7 +7,6 @@ import com.fort0.moviecatalogue.data.source.Repository
 import com.fort0.moviecatalogue.di.Injection
 import com.fort0.moviecatalogue.ui.detail.DetailViewModel
 import com.fort0.moviecatalogue.ui.favorite.movie.FavoriteMovieViewModel
-import com.fort0.moviecatalogue.ui.favorite.tvshow.FavoriteTvShowFragment
 import com.fort0.moviecatalogue.ui.favorite.tvshow.FavoriteTvShowViewModel
 import com.fort0.moviecatalogue.ui.movie.MovieViewModel
 import com.fort0.moviecatalogue.ui.tvshow.TvShowViewModel
@@ -46,7 +45,7 @@ class ViewModelFactory private constructor(private val repository: Repository) :
                 return FavoriteMovieViewModel(repository) as T
             }
 
-            modelClass.isAssignableFrom(FavoriteTvShowFragment::class.java) -> {
+            modelClass.isAssignableFrom(FavoriteTvShowViewModel::class.java) -> {
                 return FavoriteTvShowViewModel(repository) as T
             }
 

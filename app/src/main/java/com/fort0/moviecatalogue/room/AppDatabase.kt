@@ -19,17 +19,17 @@ abstract class AppDatabase : RoomDatabase() {
     companion object {
 
         @Volatile
-        private var INSTANCE: AppDatabase? = null
+        private var instance: AppDatabase? = null
 
-        fun getInstance(context: Context): AppDatabase =
-            INSTANCE ?: synchronized(this) {
-                Room.databaseBuilder(
-                    context,
-                    AppDatabase::class.java,
-                    "app.db"
-                ).build().apply {
-                    INSTANCE = this
+        fun getInstance(context: Context): AppDatabase? {
+            if (instance == null) {
+                synchronized(Database::class.java) {
+                    instance = Room.databaseBuilder(context, AppDatabase::class.java, "myDB")
+                        .build()
                 }
             }
+
+            return instance
+        }
     }
 }

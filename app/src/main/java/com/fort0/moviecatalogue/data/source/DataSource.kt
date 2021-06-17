@@ -11,8 +11,8 @@ interface DataSource {
     fun getMovieDetail(movieId: String): LiveData<Movies>
     fun getTvShowList(): LiveData<Resource<PagedList<TvShow>>>
     fun getTvShowDetail(tvshowId: String): LiveData<TvShow>
-    fun addTvShowToFavorite(id: String, isFavorite: Boolean)
-    fun addMovieToFavorite(id: String, isFavorite: Boolean)
+    fun tvShowFavoriteState(id: String, isFavorite: Boolean)
+    fun movieFavoriteState(id: String, isFavorite: Boolean)
     fun getTvShowByIdFromDb(id: String): LiveData<TvShow>
     fun getMovieByIdFromDb(id: String): LiveData<Movies>
     fun getTvShowFromDb(): LiveData<PagedList<TvShow>>
