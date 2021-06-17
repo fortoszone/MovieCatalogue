@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.fort0.moviecatalogue.R
 import com.fort0.moviecatalogue.databinding.FragmentFavoriteBinding
+import com.fort0.moviecatalogue.ui.favorite.movie.FavoriteMovieFragment
+import com.fort0.moviecatalogue.ui.favorite.tvshow.FavoriteTvShowFragment
 
 
 class FavoriteFragment : Fragment() {
@@ -17,9 +19,12 @@ class FavoriteFragment : Fragment() {
         super.onCreate(savedInstanceState)
         binding = FragmentFavoriteBinding.inflate(layoutInflater)
 
-        val viewPager = binding.viewPager
-        val tabs = binding.tabs
-        tabs.setupWithViewPager(viewPager)
+        val adapter = FavoritePagerAdapter(childFragmentManager)
+        adapter.addFragment(FavoriteTvShowFragment(), getString(R.string.title_tv_show))
+        adapter.addFragment(FavoriteMovieFragment(), getString(R.string.title_movies))
+        binding.viewPager.adapter = adapter
+        binding.tabs.setupWithViewPager(binding.viewPager)
+
     }
 
     override fun onCreateView(

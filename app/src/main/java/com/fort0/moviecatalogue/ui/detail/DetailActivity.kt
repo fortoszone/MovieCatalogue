@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.fort0.moviecatalogue.R
@@ -52,6 +53,27 @@ class DetailActivity : AppCompatActivity() {
                         binding.info.visibility = View.VISIBLE
                         getMovieDetail(movies)
                     })
+
+                    viewModel.getMoviesFromDb().observe(this) {
+                        if (it != null) {
+                            if (it.isFavorite) {
+                                binding.fabFavorites.setImageDrawable(
+                                    ContextCompat.getDrawable(
+                                        this@DetailActivity, R.drawable.ic_baseline_favorite_24
+                                    )
+                                )
+                                isFavorite = true
+                            } else {
+                                binding.fabFavorites.setImageDrawable(
+                                    ContextCompat.getDrawable(
+                                        this@DetailActivity,
+                                        R.drawable.ic_baseline_favorite_border_24
+                                    )
+                                )
+                                isFavorite = false
+                            }
+                        }
+                    }
 
                     binding.fabFavorites.setOnClickListener {
                         if (isFavorite) {

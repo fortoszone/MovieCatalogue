@@ -14,7 +14,7 @@ import com.fort0.moviecatalogue.databinding.ItemRowBinding
 import com.fort0.moviecatalogue.ui.detail.DetailActivity
 
 class FavoriteTvShowAdapter :
-    PagedListAdapter<TvShow, FavoriteTvShowAdapter.ListViewHolder>(DIFF_CALLBACK) {
+    PagedListAdapter<TvShow, FavoriteTvShowAdapter.TvShowViewHolder>(DIFF_CALLBACK) {
     private val items = ArrayList<TvShow>()
 
     companion object {
@@ -31,7 +31,7 @@ class FavoriteTvShowAdapter :
             }
     }
 
-    inner class ListViewHolder(private val binding: ItemRowBinding) :
+    inner class TvShowViewHolder(private val binding: ItemRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(tvShow: TvShow) {
             with(binding) {
@@ -54,18 +54,14 @@ class FavoriteTvShowAdapter :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
         val binding: ItemRowBinding =
             ItemRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ListViewHolder(binding)
+        return TvShowViewHolder(binding)
 
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
-
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(items[position])
+    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
+        getItem(position)?.let { holder.bind(it) }
     }
 }
