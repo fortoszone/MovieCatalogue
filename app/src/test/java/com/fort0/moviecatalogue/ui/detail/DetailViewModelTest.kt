@@ -96,4 +96,34 @@ class DetailViewModelTest {
         viewModel.getTvShow().observeForever(tvshowObserver)
         verify(tvshowObserver).onChanged(tvShows)
     }
+
+    @Test
+    fun getMovieById() {
+        val dummyMovie = MutableLiveData<Movies>()
+        dummyMovie.value = movies
+        viewModel.setSelectedItem(movieId)
+
+        `when`(repository.getMovieByIdFromDb(movieId)).thenReturn(dummyMovie)
+        val movie = viewModel.getMoviesFromDb().value
+        verify(repository).getMovieByIdFromDb(movieId)
+        Assert.assertNotNull(movie)
+
+        viewModel.getMoviesFromDb().observeForever(movieObserver)
+        verify(movieObserver).onChanged(dummyMovie.value)
+    }
+
+    @Test
+    fun getTvShowsById() {
+        val dummyTvShow = MutableLiveData<TvShow>()
+        dummyTvShow.value = tvShows
+        viewModel.setSelectedItem(tvShowId)
+
+        `when`(repository.getTvShowByIdFromDb(tvShowId)).thenReturn(dummyTvShow)
+        val tvshow = viewModel.getTvShowFromDb().value
+        verify(repository).getTvShowByIdFromDb(tvShowId)
+        Assert.assertNotNull(tvshow)
+
+        viewModel.getTvShowFromDb().observeForever(tvshowObserver)
+        verify(tvshowObserver).onChanged(dummyTvShow.value)
+    }
 }

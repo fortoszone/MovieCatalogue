@@ -5,7 +5,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.IdlingRegistry
-import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -55,11 +55,11 @@ class MainActivityTest {
 
     @Test
     fun loadMovieDetail() {
-        onView(withId(R.id.navigation_movie)).perform(ViewActions.click())
+        onView(withId(R.id.navigation_movie)).perform(click())
         onView(withId(R.id.rv_movies)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                 0,
-                ViewActions.click()
+                click()
             )
         )
 
@@ -78,17 +78,30 @@ class MainActivityTest {
         onView(withId(R.id.tv_rating)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_rating)).check(matches(withText(movie[0].viewerRating)))
 
+        onView(withId(R.id.fab_favorites)).perform(click())
+
         Espresso.pressBack()
+
+        onView(withId(R.id.navigation_favorite)).perform(click())
+        onView(withText(R.string.movie_tab)).perform(click())
+        onView(withId(R.id.rv_movies)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
+
+        onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
 
     }
 
     @Test
     fun loadTvShowDetail() {
-        onView(withId(R.id.navigation_tvshow)).perform(ViewActions.click())
+        onView(withId(R.id.navigation_tvshow)).perform(click())
         onView(withId(R.id.rv_tvshow)).perform(
             RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
                 0,
-                ViewActions.click()
+                click()
             )
         )
 
@@ -106,8 +119,20 @@ class MainActivityTest {
 
         onView(withId(R.id.tv_rating)).check(matches(isDisplayed()))
         onView(withId(R.id.tv_rating)).check(matches(withText(tvShow[0].viewerRating)))
+        onView(withId(R.id.fab_favorites)).perform(click())
 
         Espresso.pressBack()
+
+        onView(withId(R.id.navigation_favorite)).perform(click())
+        onView(withText(R.string.tvshow_tab)).perform(click())
+        onView(withId(R.id.rv_tvshow)).perform(
+            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
+                0,
+                click()
+            )
+        )
+
+        onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
 
     }
 }

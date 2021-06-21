@@ -17,6 +17,7 @@
         android:layout_width="135dp"
         android:layout_height="250dp"
         android:layout_marginStart="12dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/armyofthedead" />
 
     <LinearLayout
@@ -69,11 +70,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:contentDescription="@string/todo"
                 android:src="@drawable/star" />
 
             <TextView
@@ -121,4 +124,15 @@
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_favorites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_baseline_favorite_24"
+        android:tint="@color/white"
+        tools:ignore="ContentDescription" />
 </RelativeLayout>

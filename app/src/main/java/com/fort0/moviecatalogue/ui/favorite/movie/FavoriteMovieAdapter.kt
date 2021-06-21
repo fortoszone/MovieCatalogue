@@ -1,4 +1,4 @@
-package com.fort0.moviecatalogue.ui.tvshow
+package com.fort0.moviecatalogue.ui.favorite.movie
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,43 +9,44 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.fort0.moviecatalogue.R
-import com.fort0.moviecatalogue.data.source.local.TvShow
+import com.fort0.moviecatalogue.data.source.local.Movies
 import com.fort0.moviecatalogue.databinding.ItemRowBinding
 import com.fort0.moviecatalogue.ui.detail.DetailActivity
 
-class TvShowAdapter :
-    PagedListAdapter<TvShow, TvShowAdapter.ListViewHolder>(DIFF_CALLBACK) {
+class FavoriteMovieAdapter :
+    PagedListAdapter<Movies, FavoriteMovieAdapter.MovieViewHolder>(DIFF_CALLBACK) {
 
     companion object {
-        private val DIFF_CALLBACK: DiffUtil.ItemCallback<TvShow> =
-            object : DiffUtil.ItemCallback<TvShow>() {
-                override fun areItemsTheSame(old: TvShow, new: TvShow): Boolean {
+        private val DIFF_CALLBACK: DiffUtil.ItemCallback<Movies> =
+            object : DiffUtil.ItemCallback<Movies>() {
+                override fun areItemsTheSame(old: Movies, new: Movies): Boolean {
                     return old.id == new.id
                 }
 
                 @SuppressLint("DiffUtilEquals")
-                override fun areContentsTheSame(old: TvShow, new: TvShow): Boolean {
+                override fun areContentsTheSame(old: Movies, new: Movies): Boolean {
                     return old == new
                 }
             }
     }
 
-    inner class ListViewHolder(private val binding: ItemRowBinding) :
+
+    inner class MovieViewHolder(private val binding: ItemRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(tvShow: TvShow) {
+        fun bind(movie: Movies) {
             with(binding) {
-                tvName.text = tvShow.name
-                rating.text = tvShow.viewerRating
-                tvYear.text = tvShow.year
+                tvName.text = movie.name
+                rating.text = movie.viewerRating
+                tvYear.text = movie.year
 
                 Glide.with(itemView.context)
-                    .load(tvShow.image)
+                    .load(movie.image)
                     .into(ivImageDetail)
 
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.EXTRA_CONTENT, tvShow.id)
-                    intent.putExtra(DetailActivity.EXTRA_ATTRIBUTE, R.string.tvshow.toString())
+                    intent.putExtra(DetailActivity.EXTRA_CONTENT, movie.id)
+                    intent.putExtra(DetailActivity.EXTRA_ATTRIBUTE, R.string.movie.toString())
 
                     itemView.context.startActivity(intent)
                 }
@@ -53,14 +54,14 @@ class TvShowAdapter :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val binding: ItemRowBinding =
             ItemRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ListViewHolder(binding)
+        return MovieViewHolder(binding)
 
     }
 
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }
 }

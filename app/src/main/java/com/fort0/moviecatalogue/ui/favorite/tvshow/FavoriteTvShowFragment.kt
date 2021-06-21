@@ -1,7 +1,6 @@
-package com.fort0.moviecatalogue.ui.tvshow
+package com.fort0.moviecatalogue.ui.favorite.tvshow
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fort0.moviecatalogue.R
 import com.fort0.moviecatalogue.databinding.FragmentTvshowBinding
-import com.fort0.moviecatalogue.utils.Status
 import com.fort0.moviecatalogue.viewmodel.ViewModelFactory
 
-class TvShowFragment : Fragment() {
+class FavoriteTvShowFragment : Fragment() {
     private lateinit var binding: FragmentTvshowBinding
 
     override fun onCreateView(
@@ -25,6 +23,10 @@ class TvShowFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
 
         binding = FragmentTvshowBinding.inflate(inflater, container, false)
+
+        binding.rvTvshow.visibility = View.INVISIBLE
+        binding.progressBar.visibility = View.VISIBLE
+
         return binding.root
     }
 
@@ -33,22 +35,14 @@ class TvShowFragment : Fragment() {
 
         if (activity != null) {
             val factory = ViewModelFactory.getInstance(requireActivity())
-            val viewModel = ViewModelProvider(this, factory)[TvShowViewModel::class.java]
-            val tvShowAdapter = TvShowAdapter()
+            val viewModel = ViewModelProvider(this, factory)[FavoriteTvShowViewModel::class.java]
+            val tvShowAdapter = FavoriteTvShowAdapter()
 
-            viewModel.getTvShowList().observe(viewLifecycleOwner, { tvshows ->
-                when (tvshows.status) {
-                    Status.LOADING -> binding.progressBar.visibility = View.VISIBLE
-
-                    Status.SUCCESS -> {
-                        binding.rvTvshow.visibility = View.VISIBLE
-                        binding.progressBar.visibility = View.INVISIBLE
-                        tvShowAdapter.submitList(tvshows.data)
-                        tvShowAdapter.notifyDataSetChanged()
-                    }
-
-                    Status.ERROR -> Log.e("error", tvshows.message.toString())
-                }
+            viewModel.getTvShowList().observe(viewLifecycleOwner, { tvshow ->
+                binding.rvTvshow.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.INVISIBLE
+                tvShowAdapter.submitList(tvshow)
+                tvShowAdapter.notifyDataSetChanged()
             })
 
             with(binding.rvTvshow) {

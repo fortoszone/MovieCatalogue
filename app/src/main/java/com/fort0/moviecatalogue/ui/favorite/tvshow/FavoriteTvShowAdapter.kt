@@ -1,4 +1,4 @@
-package com.fort0.moviecatalogue.ui.tvshow
+package com.fort0.moviecatalogue.ui.favorite.tvshow
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -13,8 +13,9 @@ import com.fort0.moviecatalogue.data.source.local.TvShow
 import com.fort0.moviecatalogue.databinding.ItemRowBinding
 import com.fort0.moviecatalogue.ui.detail.DetailActivity
 
-class TvShowAdapter :
-    PagedListAdapter<TvShow, TvShowAdapter.ListViewHolder>(DIFF_CALLBACK) {
+class FavoriteTvShowAdapter :
+    PagedListAdapter<TvShow, FavoriteTvShowAdapter.TvShowViewHolder>(DIFF_CALLBACK) {
+    private val items = ArrayList<TvShow>()
 
     companion object {
         private val DIFF_CALLBACK: DiffUtil.ItemCallback<TvShow> =
@@ -30,7 +31,7 @@ class TvShowAdapter :
             }
     }
 
-    inner class ListViewHolder(private val binding: ItemRowBinding) :
+    inner class TvShowViewHolder(private val binding: ItemRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(tvShow: TvShow) {
             with(binding) {
@@ -53,14 +54,14 @@ class TvShowAdapter :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TvShowViewHolder {
         val binding: ItemRowBinding =
             ItemRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ListViewHolder(binding)
+        return TvShowViewHolder(binding)
 
     }
 
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TvShowViewHolder, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }
 }

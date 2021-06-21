@@ -1,4 +1,4 @@
-package com.fort0.moviecatalogue.ui.tvshow
+package com.fort0.moviecatalogue.ui.favorite.movie
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.paging.PagedList
 import com.fort0.moviecatalogue.data.source.Repository
 import com.fort0.moviecatalogue.data.source.local.TvShow
+import com.fort0.moviecatalogue.ui.tvshow.TvShowViewModel
 import com.fort0.moviecatalogue.utils.Resource
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
@@ -18,7 +19,7 @@ import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
-class TvShowViewModelTest {
+class FavoriteMovieViewModelTest {
     private lateinit var viewModel: TvShowViewModel
 
     @get:Rule
@@ -40,7 +41,7 @@ class TvShowViewModelTest {
     }
 
     @Test
-    fun getTvShowList() {
+    fun getMovieList() {
         val dummyTvShow = Resource.success(pagedList)
         Mockito.`when`(dummyTvShow.data?.size).thenReturn(5)
         val tvshow = MutableLiveData<Resource<PagedList<TvShow>>>()
