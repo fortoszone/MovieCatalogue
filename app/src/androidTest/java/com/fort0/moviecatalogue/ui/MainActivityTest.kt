@@ -135,12 +135,4 @@ class MainActivityTest {
         onView(withId(R.id.tv_title)).check(matches(isDisplayed()))
 
     }
-
-    private fun delay() {
-        try {
-            Thread.sleep(2000)
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
-        }
-    }
 }
